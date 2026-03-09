@@ -180,7 +180,7 @@ export default function MobileMenu({ isOpen, onClose, navLinks, onNavigate }: Mo
               onClick={() => {
                 setIsButtonPressed(true);
                 setTimeout(() => setIsButtonPressed(false), 600);
-                onNavigate('application-form');
+                onNavigate('hero');
               }}
               style={{ transitionDelay: isOpen ? '700ms' : '0ms' }}
             >
