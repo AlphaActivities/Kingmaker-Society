@@ -2,8 +2,14 @@ export const luxuryScrollToSection = (sectionId: string, offset: number = 80) =>
   const element = document.getElementById(sectionId);
   if (!element) return;
 
-  // Mobile-only scroll offset adjustment: use 40 for mobile, keep 80 for desktop/tablet
-  const finalOffset = window.innerWidth < 768 ? 40 : offset;
+  // Special handling for application-form: use 96px on mobile for proper positioning
+  // All other sections: use 40px on mobile, 80px on desktop/tablet
+  let finalOffset: number;
+  if (sectionId === 'application-form') {
+    finalOffset = window.innerWidth < 768 ? 96 : 80;
+  } else {
+    finalOffset = window.innerWidth < 768 ? 40 : offset;
+  }
 
   const elementPosition = element.getBoundingClientRect().top;
   const offsetPosition = elementPosition + window.pageYOffset - finalOffset;
