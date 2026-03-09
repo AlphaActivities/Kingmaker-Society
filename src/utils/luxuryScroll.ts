@@ -2,8 +2,8 @@ export const luxuryScrollToSection = (sectionId: string, offset: number = 80) =>
   const element = document.getElementById(sectionId);
   if (!element) return;
 
-  // Mobile-only scroll offset adjustment: use 40 for mobile, keep 80 for desktop/tablet
-  const finalOffset = window.innerWidth < 768 ? 40 : offset;
+  // Mobile-only scroll offset adjustment: use 96 for mobile, keep 80 for desktop/tablet
+  const finalOffset = window.innerWidth < 768 ? 96 : offset;
 
   const elementPosition = element.getBoundingClientRect().top;
   const offsetPosition = elementPosition + window.pageYOffset - finalOffset;
