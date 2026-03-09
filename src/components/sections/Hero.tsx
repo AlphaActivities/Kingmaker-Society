@@ -118,7 +118,7 @@ export default function Hero() {
 
             <LuxFadeIn delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" onClick={() => scrollToSection('hero')}>
+                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
                   Start Application
                 </Button>
                 <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
@@ -142,7 +142,7 @@ export default function Hero() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-gradient-to-br from-[#1B1B1B] to-[#2B2B2B] border-2 border-[#FFC300]/20 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-[#FFC300]/10 hover:border-[#FFC300]/40 hover:shadow-[#FFC300]/20 transition-all duration-500">
+              <form id="application-form" onSubmit={handleSubmit} className="bg-gradient-to-br from-[#1B1B1B] to-[#2B2B2B] border-2 border-[#FFC300]/20 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-[#FFC300]/10 hover:border-[#FFC300]/40 hover:shadow-[#FFC300]/20 transition-all duration-500">
                 <h3 className="text-2xl font-bold text-white mb-6">
                   Start Your Application
                 </h3>

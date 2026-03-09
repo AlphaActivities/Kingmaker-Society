@@ -92,7 +92,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }: Navbar
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => scrollToSection('hero')}
+              onClick={() => scrollToSection('application-form')}
             >
               Start Application
             </Button>
