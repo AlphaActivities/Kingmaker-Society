@@ -1,9 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 import { getSupabaseConfig } from '../utils/envValidation';
 
-const { url: supabaseUrl, key: supabaseAnonKey } = getSupabaseConfig();
+let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const getSupabaseClient = () => {
+  if (!supabaseInstance) {
+    const { url, key } = getSupabaseConfig();
+    supabaseInstance = createClient(url, key);
+  }
+  return supabaseInstance;
+};
 
 export interface LeadData {
   firstName: string;
@@ -36,6 +42,7 @@ export interface QuestionnaireData {
 
 export const submitLead = async (data: LeadData): Promise<{ success: boolean; leadId?: string; error?: string }> => {
   try {
+    const supabase = getSupabaseClient();
     const { data: leadData, error } = await supabase
       .from('leads')
       .insert([
@@ -71,6 +78,7 @@ export const submitQuestionnaire = async (
   data: QuestionnaireData
 ): Promise<{ success: boolean; error?: string }> => {
   try {
+    const supabase = getSupabaseClient();
     const { error } = await supabase.from('questionnaire_responses').insert([
       {
         lead_id: leadId,

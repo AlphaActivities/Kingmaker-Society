@@ -2,11 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
-import { validateEnvironment } from './utils/envValidation';
 import './index.css';
-
-// Validate environment variables before app starts
-validateEnvironment();
 
 // Force page to always start at the top on load/reload
 if ('scrollRestoration' in history) {

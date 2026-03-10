@@ -13,12 +13,7 @@ export const validateEnvironment = () => {
   });
 
   if (missing.length > 0) {
-    console.error('Missing required environment variables:', missing);
-
-    if (import.meta.env.PROD) {
-      const message = `Configuration Error: Missing environment variables in production. Please configure: ${missing.join(', ')}`;
-      throw new Error(message);
-    }
+    console.warn('Missing required environment variables:', missing);
   }
 
   return {
