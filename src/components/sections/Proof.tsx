@@ -21,7 +21,7 @@ export default function Proof() {
 
   const convertToEmbedUrl = (vimeoUrl: string): string => {
     const videoId = vimeoUrl.split('/').pop();
-    return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1`;
+    return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=0`;
   };
   const proofGallery = [
     {
@@ -149,21 +149,22 @@ export default function Proof() {
 
       {modalVideo && (
         <div
-          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-8"
           onClick={() => setModalVideo(null)}
         >
           <div
-            className="relative w-[98vw] h-[95vh] max-w-[98vw] max-h-[95vh]"
+            className="relative w-full max-w-7xl mx-auto"
             onClick={(e) => e.stopPropagation()}
+            style={{ aspectRatio: '16 / 9' }}
           >
             <button
               onClick={() => setModalVideo(null)}
-              className="absolute top-4 left-6 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
+              className="absolute -top-12 right-0 sm:-top-14 sm:right-0 z-20 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-[#FFC300]/20 rounded-full transition-all duration-300 border border-white/20 hover:border-[#FFC300]/50 backdrop-blur-sm group"
               aria-label="Close video modal"
             >
-              <X className="w-6 h-6 text-white" />
+              <X className="w-6 h-6 text-white group-hover:text-[#FFC300] transition-colors duration-300" />
             </button>
-            <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl">
+            <div className="w-full h-full rounded-lg sm:rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <iframe
                 src={convertToEmbedUrl(modalVideo.url)}
                 title={modalVideo.title}
