@@ -1,4 +1,5 @@
-import { Trophy } from 'lucide-react';
+import { Trophy, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
@@ -6,6 +7,22 @@ import MediaImage from '../ui/MediaImage';
 import VideoPoster from '../ui/VideoPoster';
 
 export default function Proof() {
+  const [modalVideo, setModalVideo] = useState<{ url: string; title: string } | null>(null);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && modalVideo) {
+        setModalVideo(null);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [modalVideo]);
+
+  const convertToEmbedUrl = (vimeoUrl: string): string => {
+    const videoId = vimeoUrl.split('/').pop();
+    return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+  };
   const proofGallery = [
     {
       type: 'image' as const,
@@ -97,6 +114,7 @@ export default function Proof() {
                 videoUrl={video.videoUrl}
                 aspectRatio="video"
                 className="shadow-2xl shadow-black/50"
+                onPlay={() => setModalVideo({ url: video.videoUrl, title: video.title })}
               />
             </LuxFadeIn>
           ))}
@@ -128,6 +146,35 @@ export default function Proof() {
           ))}
         </div>
       </div>
+
+      {modalVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setModalVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-6xl mx-4 aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setModalVideo(null)}
+              className="absolute -top-12 right-0 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
+              aria-label="Close video modal"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+            <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl">
+              <iframe
+                src={convertToEmbedUrl(modalVideo.url)}
+                title={modalVideo.title}
+                className="w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </Section>
   );
 }
