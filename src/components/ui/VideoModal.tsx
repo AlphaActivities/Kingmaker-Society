@@ -65,7 +65,7 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 animate-modal-shimmer-sweep">
             <div
-              className="absolute inset-0 opacity-30"
+              className="absolute inset-0 opacity-15"
               style={{
                 background: 'linear-gradient(135deg, transparent 40%, rgba(255, 195, 0, 0.1) 50%, transparent 60%)',
                 width: '200%',
