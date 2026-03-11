@@ -149,17 +149,17 @@ export default function Proof() {
 
       {modalVideo && (
         <div
-          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-8"
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
           onClick={() => setModalVideo(null)}
         >
           <div
-            className="relative w-full max-w-7xl mx-auto"
+            className="relative w-full h-full max-w-[min(90vh,600px)] max-h-[95vh]"
             onClick={(e) => e.stopPropagation()}
-            style={{ aspectRatio: '16 / 9' }}
+            style={{ aspectRatio: '9 / 16' }}
           >
             <button
               onClick={() => setModalVideo(null)}
-              className="absolute -top-12 right-0 sm:-top-14 sm:right-0 z-20 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-[#FFC300]/20 rounded-full transition-all duration-300 border border-white/20 hover:border-[#FFC300]/50 backdrop-blur-sm group"
+              className="absolute -top-14 right-0 z-20 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-[#FFC300]/20 rounded-full transition-all duration-300 border border-white/20 hover:border-[#FFC300]/50 backdrop-blur-sm group"
               aria-label="Close video modal"
             >
               <X className="w-6 h-6 text-white group-hover:text-[#FFC300] transition-colors duration-300" />
