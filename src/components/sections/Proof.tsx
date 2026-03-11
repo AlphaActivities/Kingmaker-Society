@@ -1,37 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Trophy, X } from 'lucide-react';
+import { useState } from 'react';
+import { Trophy } from 'lucide-react';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
 import MediaImage from '../ui/MediaImage';
 import VideoPoster from '../ui/VideoPoster';
+import VideoModal from '../ui/VideoModal';
 
 export default function Proof() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeTitle, setActiveTitle] = useState<string>('');
-
-  useEffect(() => {
-    if (activeVideo) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [activeVideo]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && activeVideo) {
-        setActiveVideo(null);
-      }
-    };
-
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [activeVideo]);
 
   const handlePlayVideo = (videoUrl: string, title: string) => {
     setActiveVideo(videoUrl);
@@ -140,46 +118,12 @@ export default function Proof() {
         </div>
       </div>
 
-      {activeVideo && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/95 backdrop-blur-sm z-[200] transition-opacity duration-300"
-            onClick={handleCloseVideo}
-            aria-hidden="true"
-          />
-
-          <div className="fixed inset-0 z-[201] flex items-center justify-center p-4 sm:p-6 md:p-8">
-            <div className="relative w-full max-w-lg mx-auto">
-              <button
-                onClick={handleCloseVideo}
-                className="absolute -top-12 right-0 sm:-right-12 sm:top-0 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 hover:scale-110 z-10"
-                aria-label="Close video"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <div className="relative bg-black rounded-lg overflow-hidden shadow-2xl">
-                {activeTitle && (
-                  <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/80 to-transparent p-4 z-10">
-                    <h3 className="text-white font-semibold text-sm sm:text-base leading-tight">
-                      {activeTitle}
-                    </h3>
-                  </div>
-                )}
-
-                <video
-                  src={activeVideo}
-                  controls
-                  autoPlay
-                  playsInline
-                  className="w-full aspect-[9/16] object-contain"
-                  style={{ maxHeight: 'calc(100vh - 8rem)' }}
-                />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      <VideoModal
+        videoUrl={activeVideo || ''}
+        title={activeTitle}
+        isOpen={!!activeVideo}
+        onClose={handleCloseVideo}
+      />
 
       <div>
         <LuxFadeIn delay={0.5}>

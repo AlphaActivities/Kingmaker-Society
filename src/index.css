@@ -323,6 +323,152 @@
     animation: pulse-ring-3 2s ease-out infinite 0.8s;
   }
 
+  /* Luxury Video Modal Animations */
+  @keyframes modal-backdrop-enter {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes modal-shimmer-sweep {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes modal-container-enter {
+    0% {
+      opacity: 0;
+      transform: scale(0.92) translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes modal-container-exit {
+    0% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+  }
+
+  @keyframes modal-title-enter {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+      letter-spacing: 0.1em;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      letter-spacing: normal;
+    }
+  }
+
+  @keyframes modal-close-enter {
+    0% {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes modal-glow-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      box-shadow:
+        0 0 20px rgba(255, 195, 0, 0.2),
+        0 0 40px rgba(255, 195, 0, 0.1),
+        0 0 60px rgba(209, 31, 42, 0.05);
+    }
+    50% {
+      opacity: 0.6;
+      box-shadow:
+        0 0 30px rgba(255, 195, 0, 0.3),
+        0 0 60px rgba(255, 195, 0, 0.15),
+        0 0 90px rgba(209, 31, 42, 0.1);
+    }
+  }
+
+  @keyframes modal-border-shine {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes modal-corner-glow {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .animate-modal-backdrop-enter {
+    animation: modal-backdrop-enter 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .animate-modal-shimmer-sweep {
+    animation: modal-shimmer-sweep 1.2s ease-out;
+  }
+
+  .animate-modal-container-enter {
+    animation: modal-container-enter 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .animate-modal-container-exit {
+    animation: modal-container-exit 350ms cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  .animate-modal-title-enter {
+    animation: modal-title-enter 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 200ms both;
+  }
+
+  .animate-modal-close-enter {
+    animation: modal-close-enter 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 250ms both;
+  }
+
+  .animate-modal-glow-pulse {
+    animation: modal-glow-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-modal-border-shine {
+    animation: modal-border-shine 2.5s ease-in-out;
+  }
+
+  .animate-modal-corner-glow {
+    animation: modal-corner-glow 2s ease-in-out infinite;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
