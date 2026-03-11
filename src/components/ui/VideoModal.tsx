@@ -92,6 +92,43 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
           </button>
 
           <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 rounded-xl border border-[#FFC300]/30 pointer-events-none z-20 animate-modal-glow-pulse" />
+
+            <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none z-10">
+              <div className="absolute inset-0 animate-modal-border-shine delay-300">
+                <div
+                  className="absolute inset-0 w-[200%] h-full"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(255, 195, 0, 0.4) 50%, transparent 100%)',
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="absolute top-0 left-0 w-24 h-24 pointer-events-none z-20 opacity-60 animate-modal-corner-glow">
+              <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#FFC300] via-[#FFC300]/50 to-transparent" />
+              <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-[#FFC300] via-[#FFC300]/50 to-transparent" />
+              <div className="absolute top-0 left-0 w-2 h-2 bg-[#FFC300] rounded-full shadow-[0_0_10px_rgba(255,195,0,0.8)]" />
+            </div>
+
+            <div className="absolute top-0 right-0 w-24 h-24 pointer-events-none z-20 opacity-60 animate-modal-corner-glow" style={{ animationDelay: '0.5s' }}>
+              <div className="absolute top-0 right-0 w-full h-0.5 bg-gradient-to-l from-[#FFC300] via-[#FFC300]/50 to-transparent" />
+              <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-[#FFC300] via-[#FFC300]/50 to-transparent" />
+              <div className="absolute top-0 right-0 w-2 h-2 bg-[#FFC300] rounded-full shadow-[0_0_10px_rgba(255,195,0,0.8)]" />
+            </div>
+
+            <div className="absolute bottom-0 left-0 w-24 h-24 pointer-events-none z-20 opacity-60 animate-modal-corner-glow" style={{ animationDelay: '1s' }}>
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#D11F2A] via-[#D11F2A]/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-0.5 h-full bg-gradient-to-t from-[#D11F2A] via-[#D11F2A]/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-2 h-2 bg-[#D11F2A] rounded-full shadow-[0_0_10px_rgba(209,31,42,0.8)]" />
+            </div>
+
+            <div className="absolute bottom-0 right-0 w-24 h-24 pointer-events-none z-20 opacity-60 animate-modal-corner-glow" style={{ animationDelay: '1.5s' }}>
+              <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-[#D11F2A] via-[#D11F2A]/50 to-transparent" />
+              <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-[#D11F2A] via-[#D11F2A]/50 to-transparent" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 bg-[#D11F2A] rounded-full shadow-[0_0_10px_rgba(209,31,42,0.8)]" />
+            </div>
+
             <div className="relative bg-black rounded-xl overflow-hidden">
               {title && (
                 <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent p-4 sm:p-6 z-10 animate-modal-title-enter">
