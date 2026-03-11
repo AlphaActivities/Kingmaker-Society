@@ -76,21 +76,6 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
             isExiting ? 'animate-modal-container-exit' : 'animate-modal-container-enter'
           }`}
         >
-          <button
-            onClick={handleClose}
-            className={`absolute -top-12 right-0 sm:-right-12 sm:top-0 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-10 group ${
-              isExiting ? 'opacity-0' : 'animate-modal-close-enter'
-            }`}
-            aria-label="Close video"
-          >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFC300]/40 to-[#D11F2A]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
-
-            <div className="absolute inset-0 rounded-full animate-pulse-ring-1 bg-[#FFC300]/20" />
-            <div className="absolute inset-0 rounded-full animate-pulse-ring-2 bg-[#D11F2A]/10" />
-
-            <X className="w-6 h-6 relative z-10 transition-transform group-hover:rotate-90 duration-300" />
-          </button>
-
           <div className="relative rounded-xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0 rounded-xl border border-[#FFC300]/30 pointer-events-none z-20 animate-modal-glow-pulse" />
 
@@ -119,6 +104,21 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
             </div>
 
             <div className="relative bg-black rounded-xl overflow-hidden">
+              <button
+                onClick={handleClose}
+                className={`absolute top-3 right-3 sm:top-4 sm:right-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-30 group ${
+                  isExiting ? 'opacity-0' : 'animate-modal-close-enter'
+                }`}
+                aria-label="Close video"
+              >
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFC300]/40 to-[#D11F2A]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+
+                <div className="absolute inset-0 rounded-full animate-pulse-ring-1 bg-[#FFC300]/20" />
+                <div className="absolute inset-0 rounded-full animate-pulse-ring-2 bg-[#D11F2A]/10" />
+
+                <X className="w-6 h-6 relative z-10 transition-transform group-hover:rotate-90 duration-300" />
+              </button>
+
               {title && (
                 <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent p-4 sm:p-6 z-10 animate-modal-title-enter">
                   <h3 className="text-white font-bold text-base sm:text-lg leading-tight tracking-wide">
