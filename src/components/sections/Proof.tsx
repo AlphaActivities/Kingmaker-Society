@@ -1,5 +1,4 @@
-import { Trophy, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Trophy } from 'lucide-react';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
@@ -7,22 +6,6 @@ import MediaImage from '../ui/MediaImage';
 import VideoPoster from '../ui/VideoPoster';
 
 export default function Proof() {
-  const [modalVideo, setModalVideo] = useState<{ url: string; title: string } | null>(null);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && modalVideo) {
-        setModalVideo(null);
-      }
-    };
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [modalVideo]);
-
-  const convertToEmbedUrl = (vimeoUrl: string): string => {
-    const videoId = vimeoUrl.split('/').pop();
-    return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&autopause=0&title=0&byline=0&portrait=0&controls=1&sidedock=0`;
-  };
   const proofGallery = [
     {
       type: 'image' as const,
@@ -64,22 +47,19 @@ export default function Proof() {
 
   const videoShowcases = [
     {
-      title: 'Jordan Ali | The Kingmaker Brotherhood',
-      description: 'A founder-led look into the discipline, ambition, and brotherhood behind Kingmaker Society.',
-      posterImage: '/images/founders/jordan-ali-founder-selfie-portrait.jpg',
-      videoUrl: 'https://vimeo.com/1172591411',
+      title: 'Behind the Brotherhood',
+      description: 'See what happens inside our exclusive training sessions',
+      posterImage: 'https://images.pexels.com/photos/7991311/pexels-photo-7991311.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
     {
-      title: 'Kingmaker Society | Men\'s Bible Study Brotherhood',
-      description: 'A real look inside the weekly faith-based brotherhood and Zoom Bible study experience.',
-      posterImage: '/images/posters/kingmaker-bible-study-brotherhood-poster.jpg',
-      videoUrl: 'https://vimeo.com/1172591427',
+      title: 'Division Training Deep Dive',
+      description: 'Expert mentorship across MMA, Bodybuilding, and Calisthenics',
+      posterImage: 'https://images.pexels.com/photos/3838937/pexels-photo-3838937.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
     {
-      title: 'Jordan Ali | Founder of Kingmaker Society',
-      description: 'Meet the founder behind the movement and the mission to build disciplined, faith-driven men.',
-      posterImage: '/images/founders/jordan-ali-founder-gym-portrait.jpg',
-      videoUrl: 'https://vimeo.com/1172591386',
+      title: 'Transformation Stories',
+      description: 'Real members share their journey from average to elite',
+      posterImage: 'https://images.pexels.com/photos/4944421/pexels-photo-4944421.jpeg?auto=compress&cs=tinysrgb&w=1200',
     },
   ];
 
@@ -111,10 +91,8 @@ export default function Proof() {
                 title={video.title}
                 description={video.description}
                 posterImage={video.posterImage}
-                videoUrl={video.videoUrl}
                 aspectRatio="video"
                 className="shadow-2xl shadow-black/50"
-                onPlay={() => setModalVideo({ url: video.videoUrl, title: video.title })}
               />
             </LuxFadeIn>
           ))}
@@ -146,36 +124,6 @@ export default function Proof() {
           ))}
         </div>
       </div>
-
-      {modalVideo && (
-        <div
-          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
-          onClick={() => setModalVideo(null)}
-        >
-          <div
-            className="relative w-full h-full max-w-[min(90vh,600px)] max-h-[95vh]"
-            onClick={(e) => e.stopPropagation()}
-            style={{ aspectRatio: '9 / 16' }}
-          >
-            <button
-              onClick={() => setModalVideo(null)}
-              className="absolute -top-14 right-0 z-20 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-[#FFC300]/20 rounded-full transition-all duration-300 border border-white/20 hover:border-[#FFC300]/50 backdrop-blur-sm group"
-              aria-label="Close video modal"
-            >
-              <X className="w-6 h-6 text-white group-hover:text-[#FFC300] transition-colors duration-300" />
-            </button>
-            <div className="w-full h-full rounded-lg sm:rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <iframe
-                src={convertToEmbedUrl(modalVideo.url)}
-                title={modalVideo.title}
-                className="w-full h-full"
-                allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </Section>
   );
 }
