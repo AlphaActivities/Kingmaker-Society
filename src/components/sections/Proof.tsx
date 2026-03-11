@@ -47,19 +47,22 @@ export default function Proof() {
 
   const videoShowcases = [
     {
-      title: 'Behind the Brotherhood',
-      description: 'See what happens inside our exclusive training sessions',
-      posterImage: 'https://images.pexels.com/photos/7991311/pexels-photo-7991311.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'Jordan Ali | The Kingmaker Brotherhood',
+      description: 'A founder-led look into the discipline, ambition, and brotherhood behind Kingmaker Society.',
+      posterImage: '/images/founders/jordan-ali-founder-selfie-portrait.jpg',
+      videoUrl: 'https://vimeo.com/1172591411',
     },
     {
-      title: 'Division Training Deep Dive',
-      description: 'Expert mentorship across MMA, Bodybuilding, and Calisthenics',
-      posterImage: 'https://images.pexels.com/photos/3838937/pexels-photo-3838937.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'Kingmaker Society | Men\'s Bible Study Brotherhood',
+      description: 'A real look inside the weekly faith-based brotherhood and Zoom Bible study experience.',
+      posterImage: '/images/posters/kingmaker-bible-study-brotherhood-poster.jpg',
+      videoUrl: 'https://vimeo.com/1172591427',
     },
     {
-      title: 'Transformation Stories',
-      description: 'Real members share their journey from average to elite',
-      posterImage: 'https://images.pexels.com/photos/4944421/pexels-photo-4944421.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'Jordan Ali | Founder of Kingmaker Society',
+      description: 'Meet the founder behind the movement and the mission to build disciplined, faith-driven men.',
+      posterImage: '/images/founders/jordan-ali-founder-gym-portrait.jpg',
+      videoUrl: 'https://vimeo.com/1172591386',
     },
   ];
 
@@ -91,6 +94,7 @@ export default function Proof() {
                 title={video.title}
                 description={video.description}
                 posterImage={video.posterImage}
+                videoUrl={video.videoUrl}
                 aspectRatio="video"
                 className="shadow-2xl shadow-black/50"
               />
