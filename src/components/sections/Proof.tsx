@@ -21,7 +21,7 @@ export default function Proof() {
 
   const convertToEmbedUrl = (vimeoUrl: string): string => {
     const videoId = vimeoUrl.split('/').pop();
-    return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=0`;
+    return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=0&autopause=0&volume=1`;
   };
   const proofGallery = [
     {
@@ -169,7 +169,7 @@ export default function Proof() {
                 src={convertToEmbedUrl(modalVideo.url)}
                 title={modalVideo.title}
                 className="w-full h-full"
-                allow="autoplay; fullscreen; picture-in-picture"
+                allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
                 allowFullScreen
               />
             </div>
