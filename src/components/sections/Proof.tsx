@@ -153,7 +153,7 @@ export default function Proof() {
           onClick={() => setModalVideo(null)}
         >
           <div
-            className="relative w-full max-w-6xl mx-4 aspect-video"
+            className="relative w-[95vw] h-[90vh] max-w-[95vw] max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
