@@ -158,7 +158,7 @@ export default function Proof() {
           >
             <button
               onClick={() => setModalVideo(null)}
-              className="absolute -top-12 right-0 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
+              className="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
               aria-label="Close video modal"
             >
               <X className="w-6 h-6 text-white" />
