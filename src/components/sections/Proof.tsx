@@ -131,7 +131,6 @@ export default function Proof() {
                 title={video.title}
                 description={video.description}
                 posterImage={video.posterImage}
-                videoUrl={video.videoUrl}
                 onPlay={() => handlePlayVideo(video.videoUrl, video.title)}
                 aspectRatio="portrait"
                 className="shadow-2xl shadow-black/50"
