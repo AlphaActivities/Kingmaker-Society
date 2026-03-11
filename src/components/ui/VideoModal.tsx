@@ -103,20 +103,17 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
               <div className="absolute bottom-0 right-0 w-2 h-2 bg-[#D11F2A] rounded-full shadow-[0_0_10px_rgba(209,31,42,0.8)]" />
             </div>
 
-            <div className="relative bg-black rounded-xl overflow-hidden">
+            <div className="relative bg-black rounded-xl overflow-hidden group/video">
               <button
                 onClick={handleClose}
-                className={`absolute top-3 right-3 sm:top-4 sm:right-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-30 group ${
-                  isExiting ? 'opacity-0' : 'animate-modal-close-enter'
+                className={`absolute top-3 right-3 sm:top-4 sm:right-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-30 opacity-0 group-hover/video:opacity-100 ${
+                  isExiting ? 'opacity-0' : ''
                 }`}
                 aria-label="Close video"
               >
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFC300]/40 to-[#D11F2A]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFC300]/40 to-[#D11F2A]/40 opacity-0 hover:opacity-100 transition-opacity duration-300 blur-xl" />
 
-                <div className="absolute inset-0 rounded-full animate-pulse-ring-1 bg-[#FFC300]/20" />
-                <div className="absolute inset-0 rounded-full animate-pulse-ring-2 bg-[#D11F2A]/10" />
-
-                <X className="w-6 h-6 relative z-10 transition-transform group-hover:rotate-90 duration-300" />
+                <X className="w-6 h-6 relative z-10 transition-transform hover:rotate-90 duration-300" />
               </button>
 
               {!videoLoaded && (
