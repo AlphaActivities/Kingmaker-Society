@@ -62,19 +62,6 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
         onClick={handleClose}
         aria-hidden="true"
       >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 animate-modal-shimmer-sweep">
-            <div
-              className="absolute inset-0 opacity-15"
-              style={{
-                background: 'linear-gradient(135deg, transparent 40%, rgba(255, 195, 0, 0.1) 50%, transparent 60%)',
-                width: '200%',
-                height: '200%',
-              }}
-            />
-          </div>
-        </div>
-
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
