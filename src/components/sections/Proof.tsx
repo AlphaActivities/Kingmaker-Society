@@ -1,4 +1,5 @@
-import { Trophy } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Trophy, X } from 'lucide-react';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
@@ -6,6 +7,42 @@ import MediaImage from '../ui/MediaImage';
 import VideoPoster from '../ui/VideoPoster';
 
 export default function Proof() {
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeTitle, setActiveTitle] = useState<string>('');
+
+  useEffect(() => {
+    if (activeVideo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [activeVideo]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && activeVideo) {
+        setActiveVideo(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [activeVideo]);
+
+  const handlePlayVideo = (videoUrl: string, title: string) => {
+    setActiveVideo(videoUrl);
+    setActiveTitle(title);
+  };
+
+  const handleCloseVideo = () => {
+    setActiveVideo(null);
+    setActiveTitle('');
+  };
+
   const proofGallery = [
     {
       type: 'image' as const,
@@ -47,19 +84,22 @@ export default function Proof() {
 
   const videoShowcases = [
     {
-      title: 'Behind the Brotherhood',
-      description: 'See what happens inside our exclusive training sessions',
-      posterImage: 'https://images.pexels.com/photos/7991311/pexels-photo-7991311.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'Jordan Ali | The Kingmaker Brotherhood',
+      description: 'A direct look into the energy, structure, and mission behind the brotherhood.',
+      posterImage: '/images/founders/jordan-ali-founder-selfie-portrait.jpg',
+      videoUrl: '/videos/jordan-ali-brotherhood-promo-reel-01.mp4',
     },
     {
-      title: 'Division Training Deep Dive',
-      description: 'Expert mentorship across MMA, Bodybuilding, and Calisthenics',
-      posterImage: 'https://images.pexels.com/photos/3838937/pexels-photo-3838937.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'Jordan Ali | Founder of Kingmaker Society',
+      description: 'Founder-led authority, vision, and movement positioning for the brand.',
+      posterImage: '/images/founders/jordan-ali-founder-gym-portrait.jpg',
+      videoUrl: '/videos/jordan-ali-founder-promo-reel-01.mp4',
     },
     {
-      title: 'Transformation Stories',
-      description: 'Real members share their journey from average to elite',
-      posterImage: 'https://images.pexels.com/photos/4944421/pexels-photo-4944421.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'Kingmaker Society | Men\'s Bible Study Brotherhood',
+      description: 'A real glimpse into the faith-centered community and brotherhood environment.',
+      posterImage: '/images/posters/kingmaker-bible-study-brotherhood-poster.jpg',
+      videoUrl: '/videos/kingmaker-bible-study-zoom-promo-01.mp4',
     },
   ];
 
@@ -91,13 +131,56 @@ export default function Proof() {
                 title={video.title}
                 description={video.description}
                 posterImage={video.posterImage}
-                aspectRatio="video"
+                videoUrl={video.videoUrl}
+                onPlay={() => handlePlayVideo(video.videoUrl, video.title)}
+                aspectRatio="portrait"
                 className="shadow-2xl shadow-black/50"
               />
             </LuxFadeIn>
           ))}
         </div>
       </div>
+
+      {activeVideo && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/95 backdrop-blur-sm z-[200] transition-opacity duration-300"
+            onClick={handleCloseVideo}
+            aria-hidden="true"
+          />
+
+          <div className="fixed inset-0 z-[201] flex items-center justify-center p-4 sm:p-6 md:p-8">
+            <div className="relative w-full max-w-lg mx-auto">
+              <button
+                onClick={handleCloseVideo}
+                className="absolute -top-12 right-0 sm:-right-12 sm:top-0 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 hover:scale-110 z-10"
+                aria-label="Close video"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="relative bg-black rounded-lg overflow-hidden shadow-2xl">
+                {activeTitle && (
+                  <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/80 to-transparent p-4 z-10">
+                    <h3 className="text-white font-semibold text-sm sm:text-base leading-tight">
+                      {activeTitle}
+                    </h3>
+                  </div>
+                )}
+
+                <video
+                  src={activeVideo}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full aspect-[9/16] object-contain"
+                  style={{ maxHeight: 'calc(100vh - 8rem)' }}
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       <div>
         <LuxFadeIn delay={0.5}>
