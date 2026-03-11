@@ -153,12 +153,12 @@ export default function Proof() {
           onClick={() => setModalVideo(null)}
         >
           <div
-            className="relative w-[95vw] h-[90vh] max-w-[95vw] max-h-[90vh]"
+            className="relative w-[98vw] h-[95vh] max-w-[98vw] max-h-[95vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setModalVideo(null)}
-              className="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
+              className="absolute top-5 left-3 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
               aria-label="Close video modal"
             >
               <X className="w-6 h-6 text-white" />
