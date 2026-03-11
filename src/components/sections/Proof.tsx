@@ -21,7 +21,7 @@ export default function Proof() {
 
   const convertToEmbedUrl = (vimeoUrl: string): string => {
     const videoId = vimeoUrl.split('/').pop();
-    return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+    return `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1`;
   };
   const proofGallery = [
     {
@@ -158,7 +158,7 @@ export default function Proof() {
           >
             <button
               onClick={() => setModalVideo(null)}
-              className="absolute top-5 left-3 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
+              className="absolute top-4 left-6 z-10 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-200 border border-white/20"
               aria-label="Close video modal"
             >
               <X className="w-6 h-6 text-white" />
