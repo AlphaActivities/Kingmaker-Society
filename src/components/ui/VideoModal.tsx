@@ -119,14 +119,6 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
                 <X className="w-6 h-6 relative z-10 transition-transform group-hover:rotate-90 duration-300" />
               </button>
 
-              {title && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent p-4 sm:p-6 z-10 animate-modal-title-enter">
-                  <h3 className="text-white font-bold text-base sm:text-lg leading-tight tracking-wide">
-                    {title}
-                  </h3>
-                </div>
-              )}
-
               {!videoLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center z-5 bg-black">
                   <div className="relative">
