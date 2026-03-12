@@ -66,15 +66,15 @@ export default function SocialProof() {
     {
       value: '1000+',
       label: 'Transformations',
-      gradient: 'from-[#D11F2A] via-[#FF4500] to-[#FF6347]',
-      glowColor: 'group-hover:shadow-[#D11F2A]/60',
+      gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
+      glowColor: 'group-hover:shadow-[#FFC300]/60',
       icon: '🔥',
     },
     {
       value: 'Daily',
       label: 'Accountability Calls',
-      gradient: 'from-emerald-500 via-green-500 to-teal-500',
-      glowColor: 'group-hover:shadow-emerald-500/60',
+      gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
+      glowColor: 'group-hover:shadow-[#FFC300]/60',
       icon: '📞',
     },
   ];
