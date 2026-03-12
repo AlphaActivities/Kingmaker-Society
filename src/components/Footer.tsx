@@ -70,19 +70,18 @@ export default function Footer() {
 
           <div className="flex flex-col">
             <h3 className="text-white font-bold mb-6">Navigation</h3>
-            <ul className="flex flex-col justify-between flex-1">
+            <nav className="flex flex-col space-y-1.5 md:space-y-0 md:flex-1">
               {footerLinks.navigation.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => scrollToSection(link.id)}
-                    className="group relative flex items-center text-sm font-medium text-gray-400 hover:text-[#FFC300] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFC300] text-left"
-                  >
-                    <span>{link.label}</span>
-                    <span className="pointer-events-none absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#FFD54F] via-[#FFC300] to-[#FFB000] transition-transform duration-300 group-hover:scale-x-100" />
-                  </button>
-                </li>
+                <button
+                  key={index}
+                  onClick={() => scrollToSection(link.id)}
+                  className="group relative flex items-center text-sm font-medium text-gray-400 hover:text-[#FFC300] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFC300] text-left py-3 min-h-[44px] md:py-0 md:min-h-0 md:flex-1 w-full"
+                >
+                  <span>{link.label}</span>
+                  <span className="pointer-events-none absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#FFD54F] via-[#FFC300] to-[#FFB000] transition-transform duration-300 group-hover:scale-x-100" />
+                </button>
               ))}
-            </ul>
+            </nav>
           </div>
 
           <div className="flex flex-col">
