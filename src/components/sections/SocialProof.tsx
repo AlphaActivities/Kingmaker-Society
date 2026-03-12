@@ -9,37 +9,73 @@ export default function SocialProof() {
       name: 'Facebook',
       icon: Facebook,
       url: 'https://www.facebook.com/share/1AjDsJoufe/?mibextid=wwXIfr',
-      color: 'hover:text-blue-500',
+      gradient: 'from-blue-600 to-blue-400',
+      hoverGlow: 'group-hover:shadow-blue-500/60',
+      iconColor: 'text-blue-400',
     },
     {
       name: 'Instagram',
       icon: Instagram,
       url: 'https://www.instagram.com/kingmakersocial?igsh=YXdveTkyczZkazgy',
-      color: 'hover:text-pink-500',
+      gradient: 'from-pink-600 via-purple-600 to-orange-500',
+      hoverGlow: 'group-hover:shadow-pink-500/60',
+      iconColor: 'text-pink-400',
     },
     {
       name: 'TikTok',
       icon: MessageCircle,
       url: 'https://www.tiktok.com/@kingmaker.society?_r=1&_t=ZP-946vWbtdl9S',
-      color: 'hover:text-white',
+      gradient: 'from-cyan-500 to-pink-500',
+      hoverGlow: 'group-hover:shadow-cyan-400/60',
+      iconColor: 'text-cyan-400',
     },
     {
       name: 'Discord',
       icon: MessageCircle,
       url: 'https://discord.gg/hHSuV4tSm',
-      color: 'hover:text-[#FFC300]',
+      gradient: 'from-indigo-600 to-indigo-400',
+      hoverGlow: 'group-hover:shadow-indigo-500/60',
+      iconColor: 'text-indigo-400',
     },
     {
       name: 'YouTube',
       icon: Youtube,
       url: 'https://www.youtube.com/@KINGMAKERSOCIETY',
-      color: 'hover:text-red-500',
+      gradient: 'from-red-600 to-red-400',
+      hoverGlow: 'group-hover:shadow-red-500/60',
+      iconColor: 'text-red-400',
     },
     {
       name: 'Linktree',
       icon: LinkIcon,
       url: 'https://linktr.ee/kingmakersocialwork',
-      color: 'hover:text-green-500',
+      gradient: 'from-green-600 to-emerald-400',
+      hoverGlow: 'group-hover:shadow-green-500/60',
+      iconColor: 'text-green-400',
+    },
+  ];
+
+  const stats = [
+    {
+      value: '500+',
+      label: 'Active Members',
+      gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
+      glowColor: 'group-hover:shadow-[#FFC300]/60',
+      icon: '👥',
+    },
+    {
+      value: '1000+',
+      label: 'Transformations',
+      gradient: 'from-[#D11F2A] via-[#FF4500] to-[#FF6347]',
+      glowColor: 'group-hover:shadow-[#D11F2A]/60',
+      icon: '🔥',
+    },
+    {
+      value: 'Daily',
+      label: 'Accountability Calls',
+      gradient: 'from-emerald-500 via-green-500 to-teal-500',
+      glowColor: 'group-hover:shadow-emerald-500/60',
+      icon: '📞',
     },
   ];
 
@@ -57,47 +93,54 @@ export default function SocialProof() {
       </LuxFadeIn>
 
       <LuxFadeIn delay={0.1}>
-        <Card variant="premium" className="p-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {socialLinks.map((social, index) => (
-            <a
-              key={index}
-              href={social.url}
-              className="flex flex-col items-center space-y-3 group"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className={`w-16 h-16 bg-[#2B2B2B] rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-[#3B3B3B] ${social.color}`}>
-                <social.icon className="w-8 h-8 text-gray-400 group-hover:text-current transition-colors duration-300" />
-              </div>
-              <span className="text-sm text-gray-400 group-hover:text-white transition-colors duration-300">
-                {social.name}
-              </span>
-            </a>
-          ))}
+        <div className="relative p-12 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl shadow-[#FFC300]/20 backdrop-blur-sm luxury-grain overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FFC300]/5 via-transparent to-[#D11F2A]/5 animate-pulse"></div>
+          <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                className="flex flex-col items-center space-y-4 group"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 shadow-xl ${social.hoverGlow}`}>
+                  <social.icon className="w-10 h-10 text-white drop-shadow-lg" />
+                  <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
+                </div>
+                <span className={`text-sm font-semibold ${social.iconColor} group-hover:text-white transition-colors duration-300`}>
+                  {social.name}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
-      </Card>
       </LuxFadeIn>
 
       <div className="grid md:grid-cols-3 gap-8 mt-12">
-        <LuxFadeIn delay={0.2}>
-          <Card variant="premium" className="p-6 text-center hover:scale-105 transition-all duration-500">
-          <div className="text-4xl font-bold text-[#FFC300] mb-2">500+</div>
-          <p className="text-gray-400">Active Members</p>
-        </Card>
-        </LuxFadeIn>
-        <LuxFadeIn delay={0.3}>
-          <Card variant="premium" className="p-6 text-center hover:scale-105 transition-all duration-500">
-            <div className="text-4xl font-bold text-[#FFC300] mb-2">1000+</div>
-            <p className="text-gray-400">Transformations</p>
-          </Card>
-        </LuxFadeIn>
-        <LuxFadeIn delay={0.4}>
-          <Card variant="premium" className="p-6 text-center hover:scale-105 transition-all duration-500">
-            <div className="text-4xl font-bold text-[#FFC300] mb-2">Daily</div>
-            <p className="text-gray-400">Accountability Calls</p>
-          </Card>
-        </LuxFadeIn>
+        {stats.map((stat, index) => (
+          <LuxFadeIn key={index} delay={0.2 + index * 0.1}>
+            <div className="group relative p-8 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl hover:border-[#FFC300]/60 transition-all duration-500 hover:scale-105 luxury-grain overflow-hidden">
+              <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
+
+              <div className="relative text-center space-y-3">
+                <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                  {stat.icon}
+                </div>
+                <div className={`text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,195,0,0.3)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.6)] transition-all duration-500`}>
+                  {stat.value}
+                </div>
+                <p className="text-gray-300 text-lg font-semibold group-hover:text-white transition-colors duration-300">
+                  {stat.label}
+                </p>
+              </div>
+
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </LuxFadeIn>
+        ))}
       </div>
     </Section>
   );
