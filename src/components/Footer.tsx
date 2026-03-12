@@ -40,7 +40,7 @@ export default function Footer() {
                 className="h-14 w-auto object-contain"
               />
               <span className="text-xl font-bold text-white">
-                Kingmaker
+                Kingmaker Society
               </span>
             </div>
             <p className="text-gray-400 text-sm">
