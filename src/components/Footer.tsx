@@ -75,9 +75,10 @@ export default function Footer() {
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="text-gray-400 hover:text-[#FFC300] transition-colors duration-200 text-sm"
+                    className="group relative flex items-center text-sm font-medium text-gray-400 hover:text-[#FFC300] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FFC300] text-left"
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    <span className="pointer-events-none absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#FFD54F] via-[#FFC300] to-[#FFB000] transition-transform duration-300 group-hover:scale-x-100" />
                   </button>
                 </li>
               ))}
