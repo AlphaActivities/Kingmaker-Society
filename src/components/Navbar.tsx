@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Crown } from 'lucide-react';
 import Button from './ui/Button';
 import HamburgerIcon from './ui/HamburgerIcon';
 import { luxuryScrollToSection } from '../utils/luxuryScroll';
@@ -42,7 +41,12 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }: Navbar
             onClick={() => scrollToSection('hero')}
             aria-label="Go to homepage"
           >
-            <Crown className="w-8 h-8 text-[#FFC300]" aria-hidden="true" />
+            <img
+              src="/images/logos/logo.PNG"
+              alt="Kingmaker Society Logo"
+              className="w-8 h-8 object-contain"
+              aria-hidden="true"
+            />
             <span className="text-xl font-bold text-white">
               Kingmaker <span className="text-[#FFC300]">Society</span>
             </span>

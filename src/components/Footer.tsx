@@ -1,4 +1,4 @@
-import { Crown, Facebook, Instagram, Youtube, MessageCircle, Mail } from 'lucide-react';
+import { Facebook, Instagram, Youtube, MessageCircle, Mail } from 'lucide-react';
 import { luxuryScrollToSection } from '../utils/luxuryScroll';
 
 export default function Footer() {
@@ -34,7 +34,11 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <Crown className="w-8 h-8 text-[#FFC300]" />
+              <img
+                src="/images/logos/logo.PNG"
+                alt="Kingmaker Society Logo"
+                className="w-8 h-8 object-contain"
+              />
               <span className="text-xl font-bold text-white">
                 Kingmaker
               </span>

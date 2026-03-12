@@ -48,9 +48,9 @@ export default function Proof() {
     },
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/3837757/pexels-photo-3837757.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      alt: 'Brotherhood and accountability in group training session',
-      category: 'Community',
+      src: '/images/proof/kingmaker-disciplines-collage.jpg',
+      alt: 'Kingmaker Society disciplines showcasing transformation across multiple areas',
+      category: 'Disciplines',
     },
     {
       type: 'image' as const,

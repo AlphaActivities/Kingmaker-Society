@@ -23,6 +23,13 @@ export default function FinalCTA() {
   return (
     <Section id="final-cta" background="gradient">
       <div className="relative">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/images/posters/kingmaker-rise-above-the-ordinary-poster.png"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#D11F2A]/20 to-[#FFC300]/20 blur-3xl"></div>
 
         <div className="relative text-center max-w-4xl mx-auto space-y-8">
