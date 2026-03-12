@@ -106,15 +106,45 @@ export default function Hero() {
               </h1>
             </LuxFadeIn>
 
-            <LuxFadeIn delay={0.3}>
-              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
-                A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business
-                <span className="text-[#FFC300] font-semibold"> without doing it alone.</span>
-              </p>
-              <p className="text-lg sm:text-xl text-gray-400 italic mt-4">
-                Built for men who want to lead their life, not just live it.
-              </p>
-            </LuxFadeIn>
+            <div className="overflow-hidden">
+              <div className="space-y-4">
+                <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
+                  {[
+                    'A structured',
+                    'brotherhood',
+                    'for',
+                    'faith-driven men',
+                    'working a 9-to-5',
+                    'who want to build their',
+                    'body,',
+                    'discipline,',
+                    'goals,',
+                    'and future business'
+                  ].map((word, index) => (
+                    <span
+                      key={index}
+                      className="inline-block mr-2 opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]"
+                      style={{
+                        animationDelay: `${0.3 + index * 0.08}s`,
+                      }}
+                    >
+                      {word}
+                    </span>
+                  ))}
+                  <span
+                    className="inline-block text-[#FFC300] font-semibold opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards] drop-shadow-[0_0_20px_rgba(255,195,0,0.4)]"
+                    style={{
+                      animationDelay: `${0.3 + 10 * 0.08}s`,
+                    }}
+                  >
+                    without doing it alone.
+                  </span>
+                </p>
+                <p className="text-lg sm:text-xl text-gray-400 italic opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards]" style={{ animationDelay: `${0.3 + 11 * 0.08}s` }}>
+                  Built for men who want to <span className="text-white font-medium">lead</span> their life, not just <span className="text-gray-500">live</span> it.
+                </p>
+              </div>
+            </div>
 
             <LuxFadeIn delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4">
