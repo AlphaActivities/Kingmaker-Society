@@ -56,7 +56,7 @@ export default function BookCall() {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#FFC300] mb-2">No Pressure</div>
-                <p className="text-gray-400">Just Guidance</p>
+                <p className="text-gray-400">Direct Guidance</p>
               </div>
             </div>
           </div>
