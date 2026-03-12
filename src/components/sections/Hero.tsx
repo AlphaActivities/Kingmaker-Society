@@ -5,6 +5,7 @@ import Input from '../ui/Input';
 import Select from '../ui/Select';
 import Container from '../ui/Container';
 import LuxFadeIn from '../ui/LuxFadeIn';
+import TypewriterText from '../ui/TypewriterText';
 import { luxuryScrollToSection } from '../../utils/luxuryScroll';
 import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { submitLead } from '../../services/leadService';
@@ -28,6 +29,7 @@ export default function Hero() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [formStarted, setFormStarted] = useState(false);
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
 
   const handleFormStart = () => {
     if (!formStarted) {
@@ -101,32 +103,69 @@ export default function Hero() {
             </LuxFadeIn>
 
             <LuxFadeIn delay={0.2}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                Kingmaker <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.3)]">Society</span>
-              </h1>
-            </LuxFadeIn>
+              <div className="space-y-6">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight overflow-visible">
+                  <TypewriterText
+                    lines={[
+                      {
+                        text: 'Kingmaker Society',
+                        className: 'text-white',
+                        highlights: [
+                          {
+                            word: 'Society',
+                            className: 'text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.3)]',
+                          },
+                        ],
+                      },
+                    ]}
+                    charDelay={50}
+                    lineDelay={400}
+                  />
+                </h1>
 
-            <LuxFadeIn delay={0.3}>
-              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
-                A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business
-                <span className="text-[#FFC300] font-semibold"> without doing it alone.</span>
-              </p>
-              <p className="text-lg sm:text-xl text-gray-400 italic mt-4">
-                Built for men who want to lead their life, not just live it.
-              </p>
-            </LuxFadeIn>
-
-            <LuxFadeIn delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
-                  Start Application
-                </Button>
-                <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Book a Call
-                </Button>
+                <div className="text-xl sm:text-2xl leading-relaxed space-y-6">
+                  <TypewriterText
+                    lines={[
+                      {
+                        text: 'A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business without doing it alone.',
+                        className: 'text-gray-300',
+                        highlights: [
+                          {
+                            word: 'without doing it alone',
+                            className: 'text-[#FFC300] font-semibold',
+                          },
+                        ],
+                      },
+                      {
+                        text: 'Built for men who want to lead their life, not just live it.',
+                        className: 'text-lg sm:text-xl text-gray-400 italic mt-4',
+                      },
+                    ]}
+                    charDelay={25}
+                    lineDelay={600}
+                    onComplete={() => setTypewriterComplete(true)}
+                  />
+                </div>
               </div>
             </LuxFadeIn>
+
+            <div
+              className="flex flex-col sm:flex-row gap-4"
+              style={{
+                opacity: typewriterComplete ? 1 : 0,
+                transform: typewriterComplete ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s',
+                pointerEvents: typewriterComplete ? 'auto' : 'none',
+              }}
+            >
+              <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
+                Start Application
+              </Button>
+              <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
+                <Calendar className="w-5 h-5 mr-2" />
+                Book a Call
+              </Button>
+            </div>
           </div>
 
           <LuxFadeIn delay={0.5} className="w-full">
