@@ -60,8 +60,8 @@ export default function LuxFadeIn({
       data-animation-complete={animationComplete ? 'true' : 'false'}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-        transition: `opacity ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s, transform ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s`,
+        transform: isVisible ? 'translateY(0) scale(1) rotateX(0deg)' : 'translateY(40px) scale(0.95) rotateX(5deg)',
+        transition: `opacity ${duration}s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}s, transform ${duration}s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}s`,
       }}
     >
       {children}

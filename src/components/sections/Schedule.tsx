@@ -50,22 +50,37 @@ export default function Schedule() {
         </div>
       </LuxFadeIn>
 
-      <div className="space-y-4 mb-12">
+      <div className="space-y-5 mb-12">
         {schedule.map((item, index) => (
-          <LuxFadeIn key={index} delay={index * 0.1}>
-            <Card variant="premium" hover className="p-6">
-              <div className="flex flex-col md:flex-row md:items-center md:space-x-6">
-                <div className="flex-shrink-0 mb-4 md:mb-0">
-                  <div className="w-32 h-20 bg-gradient-to-br from-[#D11F2A] to-[#A01620] rounded-lg flex items-center justify-center shadow-lg">
-                    <span className="text-2xl font-bold text-white whitespace-nowrap">{item.day}</span>
+          <LuxFadeIn key={index} delay={index * 0.12}>
+            <div className="group relative">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FFC300]/20 via-[#D11F2A]/20 to-[#FFC300]/20 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-700 group-hover:blur-md animate-pulse"></div>
+
+              <Card variant="premium" className="relative p-6 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#FFC300]/10 group-hover:-translate-y-1">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                <div className="flex flex-col md:flex-row md:items-center md:space-x-6">
+                  <div className="flex-shrink-0 mb-4 md:mb-0">
+                    <div className="relative group/badge">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-[#FFC300]/30 to-[#D11F2A]/30 rounded-xl blur opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500"></div>
+
+                      <div className="relative px-6 py-4 bg-gradient-to-br from-[#D11F2A] via-[#B81822] to-[#A01620] rounded-xl flex items-center justify-center shadow-xl shadow-[#D11F2A]/40 transition-all duration-500 group-hover/badge:scale-105 group-hover/badge:shadow-2xl group-hover/badge:shadow-[#D11F2A]/60 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500"></div>
+
+                        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent rounded-t-xl"></div>
+
+                        <span className="relative text-2xl font-bold text-white text-center min-w-[80px] drop-shadow-lg">{item.day}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex-grow min-w-0 relative">
+                    <h3 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] to-[#FFD966] mb-2 break-words drop-shadow-[0_0_15px_rgba(255,195,0,0.3)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_rgba(255,195,0,0.5)]">{item.focus}</h3>
+                    <p className="text-gray-400 break-words leading-relaxed transition-colors duration-300 group-hover:text-gray-300">{item.description}</p>
                   </div>
                 </div>
-                <div className="flex-grow min-w-0">
-                  <h3 className="text-xl font-bold text-[#FFC300] mb-2 break-words">{item.focus}</h3>
-                  <p className="text-gray-400 break-words">{item.description}</p>
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </LuxFadeIn>
         ))}
       </div>
