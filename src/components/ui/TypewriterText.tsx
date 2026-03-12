@@ -19,10 +19,11 @@ export default function TypewriterText({
   onComplete,
   children
 }: TypewriterTextProps) {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedCharCount, setDisplayedCharCount] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [shouldStart, setShouldStart] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
   const animationRef = useRef<number>();
   const prefersReducedMotion = useRef(false);
 
@@ -63,7 +64,7 @@ export default function TypewriterText({
     if (!shouldStart) return;
 
     if (prefersReducedMotion.current) {
-      setDisplayedText(text);
+      setDisplayedCharCount(text.length);
       setIsComplete(true);
       if (onComplete) {
         setTimeout(onComplete, delay);
@@ -81,7 +82,18 @@ export default function TypewriterText({
         if (elapsed >= charInterval) {
           if (currentIndex < text.length) {
             currentIndex++;
-            setDisplayedText(text.slice(0, currentIndex));
+            setDisplayedCharCount(currentIndex);
+
+            // Add the new character to DOM
+            if (containerRef.current) {
+              const newChar = document.createElement('span');
+              newChar.className = 'typewriter-char';
+              newChar.textContent = text[currentIndex - 1] === ' ' ? '\u00A0' : text[currentIndex - 1];
+              newChar.style.animation = 'charFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+              newChar.style.opacity = '0';
+              containerRef.current.appendChild(newChar);
+            }
+
             lastTime = currentTime;
             animationRef.current = requestAnimationFrame(animate);
           } else {
@@ -108,23 +120,10 @@ export default function TypewriterText({
 
   return (
     <div ref={elementRef} className={className} style={{ minHeight: '1.5em' }}>
-      {shouldStart && displayedText.length > 0 && (
+      {shouldStart && (
         <span className="inline-block">
-          {displayedText.split('').map((char, index) => (
-            <span
-              key={`char-${index}`}
-              className="typewriter-char"
-              style={{
-                animation: prefersReducedMotion.current
-                  ? 'none'
-                  : 'charFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-                opacity: prefersReducedMotion.current ? 1 : 0,
-              }}
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </span>
-          ))}
-          {!isComplete && (
+          <span ref={containerRef} className="inline-block" />
+          {!isComplete && displayedCharCount > 0 && (
             <span className="inline-block w-[2px] h-[1.2em] bg-[#FFC300] ml-[2px] animate-pulse align-middle" />
           )}
         </span>
