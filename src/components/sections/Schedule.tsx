@@ -97,33 +97,63 @@ export default function Schedule() {
 
       <div className="grid md:grid-cols-2 gap-6">
         <LuxFadeIn delay={0.5}>
-          <Card variant="gold" className="p-8 h-full relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FFC300]/10 to-transparent rounded-full blur-2xl"></div>
-            <div className="relative z-10 flex items-start space-x-4">
-              <Clock className="w-8 h-8 text-[#FFC300] flex-shrink-0" />
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Daily Zoom Call</h3>
-                <p className="text-gray-300 break-words">
-                  Guaranteed daily accountability call from <span className="text-[#FFC300] font-bold whitespace-nowrap">12:00-1:00 PM CST</span>. Additional mentor-led calls may vary.
-                </p>
+          <div className="group/info relative h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FFC300]/40 via-[#D11F2A]/30 to-[#FFC300]/40 rounded-2xl opacity-0 group-hover/info:opacity-100 blur transition-all duration-700 group-hover/info:blur-lg"></div>
+
+            <Card variant="gold" className="relative p-8 h-full overflow-hidden transition-all duration-500 group-hover/info:shadow-2xl group-hover/info:shadow-[#FFC300]/20 group-hover/info:-translate-y-1">
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-[#FFC300]/15 via-[#FFC300]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
+
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FFC300]/50 to-transparent opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 flex items-start space-x-5">
+                <div className="relative flex-shrink-0">
+                  <div className="absolute inset-0 bg-[#FFC300]/30 blur-xl rounded-full opacity-0 group-hover/info:opacity-100 transition-all duration-500 scale-150"></div>
+                  <div className="relative w-14 h-14 bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-[#FFC300]/30 transition-all duration-500 group-hover/info:scale-110 group-hover/info:rotate-6 group-hover/info:border-[#FFC300]/60">
+                    <Clock className="w-7 h-7 text-[#FFC300] transition-all duration-500 group-hover/info:scale-110 group-hover/info:-rotate-6 drop-shadow-[0_0_15px_rgba(255,195,0,0.7)]" strokeWidth={2.5} />
+                  </div>
+                </div>
+
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-3 transition-all duration-300 group-hover/info:text-transparent group-hover/info:bg-clip-text group-hover/info:bg-gradient-to-r group-hover/info:from-[#FFC300] group-hover/info:to-[#FFD966]">Daily Zoom Call</h3>
+                  <p className="text-gray-300 break-words leading-relaxed transition-colors duration-300 group-hover/info:text-gray-200">
+                    Guaranteed daily accountability call from <span className="text-[#FFC300] font-bold whitespace-nowrap px-2 py-0.5 bg-[#FFC300]/10 rounded transition-all duration-300 group-hover/info:bg-[#FFC300]/20 group-hover/info:shadow-lg group-hover/info:shadow-[#FFC300]/20">12:00-1:00 PM CST</span>. Additional mentor-led calls may vary.
+                  </p>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </LuxFadeIn>
 
         <LuxFadeIn delay={0.6}>
-          <Card variant="gold" className="p-8 h-full relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FFC300]/10 to-transparent rounded-full blur-2xl"></div>
-            <div className="relative z-10 flex items-start space-x-4">
-              <MessageSquare className="w-8 h-8 text-[#FFC300] flex-shrink-0" />
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Live Schedule</h3>
-                <p className="text-gray-300 break-words">
-                  The latest schedule and call links are always pinned inside our Discord community.
-                </p>
+          <div className="group/info relative h-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D11F2A]/40 via-[#FFC300]/30 to-[#D11F2A]/40 rounded-2xl opacity-0 group-hover/info:opacity-100 blur transition-all duration-700 group-hover/info:blur-lg"></div>
+
+            <Card variant="gold" className="relative p-8 h-full overflow-hidden transition-all duration-500 group-hover/info:shadow-2xl group-hover/info:shadow-[#D11F2A]/20 group-hover/info:-translate-y-1">
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-[#D11F2A]/15 via-[#D11F2A]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
+
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D11F2A]/50 to-transparent opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 flex items-start space-x-5">
+                <div className="relative flex-shrink-0">
+                  <div className="absolute inset-0 bg-[#D11F2A]/30 blur-xl rounded-full opacity-0 group-hover/info:opacity-100 transition-all duration-500 scale-150"></div>
+                  <div className="relative w-14 h-14 bg-gradient-to-br from-[#D11F2A]/20 to-[#FFC300]/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-[#D11F2A]/30 transition-all duration-500 group-hover/info:scale-110 group-hover/info:rotate-6 group-hover/info:border-[#D11F2A]/60">
+                    <MessageSquare className="w-7 h-7 text-[#FFC300] transition-all duration-500 group-hover/info:scale-110 group-hover/info:-rotate-6 drop-shadow-[0_0_15px_rgba(255,195,0,0.7)]" strokeWidth={2.5} />
+                  </div>
+                </div>
+
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-3 transition-all duration-300 group-hover/info:text-transparent group-hover/info:bg-clip-text group-hover/info:bg-gradient-to-r group-hover/info:from-[#FFC300] group-hover/info:to-[#FFD966]">Live Schedule</h3>
+                  <p className="text-gray-300 break-words leading-relaxed transition-colors duration-300 group-hover/info:text-gray-200">
+                    The latest schedule and call links are always pinned inside our <span className="text-[#FFC300] font-semibold">Discord community</span>.
+                  </p>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </LuxFadeIn>
       </div>
     </Section>
