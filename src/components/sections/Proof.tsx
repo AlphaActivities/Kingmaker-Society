@@ -42,8 +42,8 @@ export default function Proof() {
     },
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      alt: 'MMA championship moment showing warrior mentality and victory',
+      src: 'https://images.pexels.com/photos/6253573/pexels-photo-6253573.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      alt: 'MMA fighter in intense training showing warrior mentality and discipline',
       category: 'Championship',
     },
     {
