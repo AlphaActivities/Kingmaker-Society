@@ -62,3 +62,13 @@ export const luxuryScrollToSection = (sectionId: string, offset: number = 80) =>
     requestAnimationFrame(performScroll);
   }
 };
+
+export const scrollToApplication = () => {
+  const isMobile = window.innerWidth < 768;
+
+  if (isMobile) {
+    luxuryScrollToSection('application-form', 80);
+  } else {
+    luxuryScrollToSection('hero', 80);
+  }
+};

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Button from './ui/Button';
 import HamburgerIcon from './ui/HamburgerIcon';
-import { luxuryScrollToSection } from '../utils/luxuryScroll';
+import { luxuryScrollToSection, scrollToApplication } from '../utils/luxuryScroll';
 
 interface NavbarProps {
   isMobileMenuOpen: boolean;
@@ -96,7 +96,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }: Navbar
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => scrollToSection('application-form')}
+              onClick={scrollToApplication}
             >
               Start Application
             </Button>

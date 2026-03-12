@@ -5,7 +5,7 @@ import Input from '../ui/Input';
 import Select from '../ui/Select';
 import Container from '../ui/Container';
 import LuxFadeIn from '../ui/LuxFadeIn';
-import { luxuryScrollToSection } from '../../utils/luxuryScroll';
+import { luxuryScrollToSection, scrollToApplication } from '../../utils/luxuryScroll';
 import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { submitLead } from '../../services/leadService';
 import { useApplication } from '../../context/ApplicationContext';
@@ -119,7 +119,7 @@ export default function Hero() {
 
             <LuxFadeIn delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')} className="animate-pulse-glow">
+                <Button variant="primary" size="lg" onClick={scrollToApplication} className="animate-pulse-glow">
                   Start Application
                 </Button>
                 <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')} className="whitespace-nowrap">
