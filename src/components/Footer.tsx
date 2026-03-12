@@ -95,7 +95,10 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="group flex items-center space-x-3"
                 >
-                  <div className={`relative w-10 h-10 rounded-lg bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg ${social.hoverGlow}`}>
+                  <div
+                    className={`relative w-10 h-10 rounded-lg bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:-rotate-12 group-hover:shadow-lg ${social.hoverGlow}`}
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
                     <social.icon className="w-5 h-5 text-white" />
                     <div className="absolute inset-0 rounded-lg bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                   </div>
