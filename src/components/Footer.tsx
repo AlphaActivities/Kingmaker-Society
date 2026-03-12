@@ -33,17 +33,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex flex-col items-center space-y-3 mb-6">
               <img
                 src="/images/logos/logo.PNG"
                 alt="Kingmaker Society Logo"
-                className="h-14 w-auto object-contain"
+                className="h-24 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,195,0,0.3)] transition-all duration-500 hover:drop-shadow-[0_0_25px_rgba(255,195,0,0.5)] hover:scale-105"
               />
-              <span className="text-xl font-bold text-white">
+              <span className="text-2xl font-bold text-white tracking-wide">
                 Kingmaker <span className="text-[#FFC300]">Society</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm text-center leading-relaxed">
               Built for men who want to lead their life, not just live it.
             </p>
           </div>
