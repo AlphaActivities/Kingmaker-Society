@@ -128,19 +128,19 @@ export default function Schedule() {
 
         <LuxFadeIn delay={0.6}>
           <div className="group/info relative h-full">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D11F2A]/40 via-[#FFC300]/30 to-[#D11F2A]/40 rounded-2xl opacity-0 group-hover/info:opacity-100 blur transition-all duration-700 group-hover/info:blur-lg"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FFC300]/40 via-[#D11F2A]/30 to-[#FFC300]/40 rounded-2xl opacity-0 group-hover/info:opacity-100 blur transition-all duration-700 group-hover/info:blur-lg"></div>
 
-            <Card variant="gold" className="relative p-8 h-full overflow-hidden transition-all duration-500 group-hover/info:shadow-2xl group-hover/info:shadow-[#D11F2A]/20 group-hover/info:-translate-y-1">
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-[#D11F2A]/15 via-[#D11F2A]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
+            <Card variant="gold" className="relative p-8 h-full overflow-hidden transition-all duration-500 group-hover/info:shadow-2xl group-hover/info:shadow-[#FFC300]/20 group-hover/info:-translate-y-1">
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-[#FFC300]/15 via-[#FFC300]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
 
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D11F2A]/50 to-transparent opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FFC300]/50 to-transparent opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
 
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10 flex items-start space-x-5">
                 <div className="relative flex-shrink-0">
-                  <div className="absolute inset-0 bg-[#D11F2A]/30 blur-xl rounded-full opacity-0 group-hover/info:opacity-100 transition-all duration-500 scale-150"></div>
-                  <div className="relative w-14 h-14 bg-gradient-to-br from-[#D11F2A]/20 to-[#FFC300]/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-[#D11F2A]/30 transition-all duration-500 group-hover/info:scale-110 group-hover/info:rotate-6 group-hover/info:border-[#D11F2A]/60">
+                  <div className="absolute inset-0 bg-[#FFC300]/30 blur-xl rounded-full opacity-0 group-hover/info:opacity-100 transition-all duration-500 scale-150"></div>
+                  <div className="relative w-14 h-14 bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-[#FFC300]/30 transition-all duration-500 group-hover/info:scale-110 group-hover/info:rotate-6 group-hover/info:border-[#FFC300]/60">
                     <MessageSquare className="w-7 h-7 text-[#FFC300] transition-all duration-500 group-hover/info:scale-110 group-hover/info:-rotate-6 drop-shadow-[0_0_15px_rgba(255,195,0,0.7)]" strokeWidth={2.5} />
                   </div>
                 </div>
