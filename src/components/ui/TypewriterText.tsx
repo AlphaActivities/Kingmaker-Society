@@ -107,28 +107,30 @@ export default function TypewriterText({
   }, [shouldStart, text, delay, charInterval, pauseAfter, onComplete]);
 
   return (
-    <div ref={elementRef} className={className}>
-      <span className="inline-block">
-        {displayedText.split('').map((char, index) => (
-          <span
-            key={index}
-            className="inline-block typewriter-char"
-            style={{
-              animation: prefersReducedMotion.current
-                ? 'none'
-                : 'charFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-              opacity: 0,
-              animationDelay: '0s',
-              animationFillMode: 'forwards',
-            }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </span>
-        ))}
-        {!isComplete && (
-          <span className="inline-block w-[2px] h-[1.2em] bg-[#FFC300] ml-[2px] animate-pulse align-middle" />
-        )}
-      </span>
+    <div ref={elementRef} className={className} style={{ minHeight: '1.5em' }}>
+      {shouldStart && (
+        <span className="inline-block">
+          {displayedText.split('').map((char, index) => (
+            <span
+              key={index}
+              className="inline-block typewriter-char"
+              style={{
+                animation: prefersReducedMotion.current
+                  ? 'none'
+                  : 'charFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+                opacity: 0,
+                animationDelay: '0s',
+                animationFillMode: 'forwards',
+              }}
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </span>
+          ))}
+          {!isComplete && displayedText.length > 0 && (
+            <span className="inline-block w-[2px] h-[1.2em] bg-[#FFC300] ml-[2px] animate-pulse align-middle" />
+          )}
+        </span>
+      )}
       {children && isComplete && children}
     </div>
   );
