@@ -108,25 +108,23 @@ export default function TypewriterText({
 
   return (
     <div ref={elementRef} className={className} style={{ minHeight: '1.5em' }}>
-      {shouldStart && (
+      {shouldStart && displayedText.length > 0 && (
         <span className="inline-block">
           {displayedText.split('').map((char, index) => (
             <span
-              key={index}
-              className="inline-block typewriter-char"
+              key={`char-${index}`}
+              className="typewriter-char"
               style={{
                 animation: prefersReducedMotion.current
                   ? 'none'
                   : 'charFadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-                opacity: 0,
-                animationDelay: '0s',
-                animationFillMode: 'forwards',
+                opacity: prefersReducedMotion.current ? 1 : 0,
               }}
             >
               {char === ' ' ? '\u00A0' : char}
             </span>
           ))}
-          {!isComplete && displayedText.length > 0 && (
+          {!isComplete && (
             <span className="inline-block w-[2px] h-[1.2em] bg-[#FFC300] ml-[2px] animate-pulse align-middle" />
           )}
         </span>
