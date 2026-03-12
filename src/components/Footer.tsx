@@ -43,9 +43,10 @@ export default function Footer() {
                 Kingmaker <span className="text-[#FFC300]">Society</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm text-center leading-relaxed">
-              Built for men who want to lead their life, not just live it.
-            </p>
+            <div className="text-gray-400 text-sm text-center leading-relaxed space-y-2">
+              <p className="text-gray-300">Built for men who want to lead their life, not just live it.</p>
+              <p className="text-gray-500">Where discipline meets purpose, and brotherhood fuels transformation.</p>
+            </div>
           </div>
 
           <div>
@@ -109,17 +110,18 @@ export default function Footer() {
               © {new Date().getFullYear()} Kingmaker Society. All rights reserved.
             </p>
 
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-gray-400 hover:text-[#FFC300] transition-colors duration-200"
+                  className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#2B2B2B] to-[#1B1B1B] border-2 border-[#FFC300]/30 text-[#FFC300] hover:border-[#FFC300] hover:scale-110 hover:shadow-lg hover:shadow-[#FFC300]/40 transition-all duration-300 group"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFC300] to-[#D11F2A] opacity-0 group-hover:opacity-20 blur transition-opacity duration-300"></div>
                 </a>
               ))}
             </div>

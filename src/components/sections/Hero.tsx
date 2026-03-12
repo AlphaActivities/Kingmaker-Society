@@ -87,8 +87,10 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-start pt-32 bg-gradient-to-b from-black via-[#0B0B0B] to-[#0B0B0B]">
+    <section id="hero" className="relative min-h-screen flex items-start pt-32 bg-gradient-to-b from-black via-[#0B0B0B] to-[#0B0B0B] luxury-grain">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFGMUYxRiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-[#FFC300]/20 to-[#D11F2A]/20 rounded-full blur-3xl opacity-30 animate-luxury-glow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[#D11F2A]/20 to-[#FFC300]/20 rounded-full blur-3xl opacity-30 animate-luxury-glow" style={{ animationDelay: '2s' }}></div>
 
       <Container className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center py-12 md:py-16 lg:py-20">
@@ -101,8 +103,9 @@ export default function Hero() {
             </LuxFadeIn>
 
             <LuxFadeIn delay={0.2}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                Kingmaker <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.3)]">Society</span>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Kingmaker</span>{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.4)]">Society</span>
               </h1>
             </LuxFadeIn>
 
@@ -118,10 +121,10 @@ export default function Hero() {
 
             <LuxFadeIn delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
+                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')} className="animate-pulse-glow">
                   Start Application
                 </Button>
-                <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
+                <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')} className="whitespace-nowrap">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book a Call
                 </Button>
@@ -142,7 +145,7 @@ export default function Hero() {
                 </div>
               </div>
             ) : (
-              <form id="application-form" onSubmit={handleSubmit} className="bg-gradient-to-br from-[#1B1B1B] to-[#2B2B2B] border-2 border-[#FFC300]/20 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-[#FFC300]/10 hover:border-[#FFC300]/40 hover:shadow-[#FFC300]/20 transition-all duration-500">
+              <form id="application-form" onSubmit={handleSubmit} className="bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-[#FFC300]/20 hover:border-[#FFC300]/50 hover:shadow-[#FFC300]/30 transition-all duration-500 backdrop-blur-sm luxury-grain">
                 <h3 className="text-2xl font-bold text-white mb-6">
                   Start Your Application
                 </h3>
