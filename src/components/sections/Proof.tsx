@@ -24,37 +24,37 @@ export default function Proof() {
   const proofGallery = [
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/6740747/pexels-photo-6740747.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      src: 'https://images.pexels.com/photos/7991691/pexels-photo-7991691.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'MMA fighter training session showing combat discipline',
       category: 'MMA Training',
     },
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      src: 'https://images.pexels.com/photos/3838937/pexels-photo-3838937.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'Bodybuilding training showcasing strength and physique development',
       category: 'Bodybuilding',
     },
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/4944499/pexels-photo-4944499.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      src: 'https://images.pexels.com/photos/4162449/pexels-photo-4162449.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'Calisthenics athlete demonstrating bodyweight mastery',
       category: 'Calisthenics',
     },
     {
       type: 'image' as const,
-      src: '/images/mentors/willie-mma-division-lead-champion.jpg',
+      src: 'https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'MMA championship moment showing warrior mentality and victory',
       category: 'Championship',
     },
     {
       type: 'image' as const,
-      src: '/images/proof/kingmaker-disciplines-collage.jpg',
+      src: 'https://images.pexels.com/photos/4944421/pexels-photo-4944421.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'Kingmaker Society disciplines showcasing transformation across multiple areas',
       category: 'Disciplines',
     },
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/4944421/pexels-photo-4944421.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      src: 'https://images.pexels.com/photos/3490348/pexels-photo-3490348.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'Transformation progress showing dedication and results',
       category: 'Transformation',
     },

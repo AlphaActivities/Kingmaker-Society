@@ -21,17 +21,18 @@ export default function FinalCTA() {
   };
 
   return (
-    <Section id="final-cta" background="gradient">
-      <div className="relative">
-        <div className="absolute inset-0 opacity-10">
-          <img
-            src="/images/posters/kingmaker-rise-above-the-ordinary-poster.png"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#D11F2A]/20 to-[#FFC300]/20 blur-3xl"></div>
+    <Section id="final-cta" background="gradient" className="relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/posters/kingmaker-rise-above-the-ordinary-poster.png"
+          alt=""
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/70 to-[#0B0B0B]/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#D11F2A]/10 to-[#FFC300]/10"></div>
+      </div>
 
+      <div className="relative z-10">
         <div className="relative text-center max-w-4xl mx-auto space-y-8">
           <LuxFadeIn>
             <Crown className="w-20 h-20 text-[#FFC300] mx-auto drop-shadow-[0_0_30px_rgba(255,195,0,0.4)]" />
