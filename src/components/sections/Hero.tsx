@@ -5,7 +5,6 @@ import Input from '../ui/Input';
 import Select from '../ui/Select';
 import Container from '../ui/Container';
 import LuxFadeIn from '../ui/LuxFadeIn';
-import TypewriterText from '../ui/TypewriterText';
 import { luxuryScrollToSection } from '../../utils/luxuryScroll';
 import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { submitLead } from '../../services/leadService';
@@ -29,8 +28,6 @@ export default function Hero() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [formStarted, setFormStarted] = useState(false);
-  const [showTagline, setShowTagline] = useState(false);
-  const [showButtons, setShowButtons] = useState(false);
 
   const handleFormStart = () => {
     if (!formStarted) {
@@ -109,41 +106,27 @@ export default function Hero() {
               </h1>
             </LuxFadeIn>
 
-            <div className="space-y-4">
-              <TypewriterText
-                text="A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business without doing it alone."
-                delay={1200}
-                charInterval={40}
-                pauseAfter={250}
-                onComplete={() => setShowTagline(true)}
-                className="text-xl sm:text-2xl text-gray-300 leading-relaxed"
-              />
+            <LuxFadeIn delay={0.3}>
+              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
+                A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business
+                <span className="text-[#FFC300] font-semibold"> without doing it alone.</span>
+              </p>
+              <p className="text-lg sm:text-xl text-gray-400 italic mt-4">
+                Built for men who want to lead their life, not just live it.
+              </p>
+            </LuxFadeIn>
 
-              {showTagline && (
-                <TypewriterText
-                  text="Built for men who want to lead their life, not just live it."
-                  delay={0}
-                  charInterval={40}
-                  pauseAfter={500}
-                  onComplete={() => setShowButtons(true)}
-                  className="text-lg sm:text-xl text-gray-400 italic"
-                />
-              )}
-            </div>
-
-            {showButtons && (
-              <LuxFadeIn delay={0}>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
-                    Start Application
-                  </Button>
-                  <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Book a Call
-                  </Button>
-                </div>
-              </LuxFadeIn>
-            )}
+            <LuxFadeIn delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
+                  Start Application
+                </Button>
+                <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Book a Call
+                </Button>
+              </div>
+            </LuxFadeIn>
           </div>
 
           <LuxFadeIn delay={0.5} className="w-full">
