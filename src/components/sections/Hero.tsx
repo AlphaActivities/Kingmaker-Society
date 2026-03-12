@@ -10,6 +10,7 @@ import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { submitLead } from '../../services/leadService';
 import { useApplication } from '../../context/ApplicationContext';
 import { trackBeginApplication, trackCompleteLeadForm } from '../../utils/analytics';
+import { useTypewriter } from '../../hooks/useTypewriter';
 
 export default function Hero() {
   const { setLeadId, setApplicationStep, setLeadSubmitted } = useApplication();
@@ -28,6 +29,20 @@ export default function Hero() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [formStarted, setFormStarted] = useState(false);
+  const [showCTAs, setShowCTAs] = useState(false);
+
+  const { displayedTexts, isComplete, showCursor, currentIndex } = useTypewriter({
+    texts: [
+      'Kingmaker Society',
+      'A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business without doing it alone.',
+      'Built for men who want to lead their life, not just live it.',
+    ],
+    speeds: [60, 30, 30],
+    startDelay: 300,
+    onComplete: () => {
+      setTimeout(() => setShowCTAs(true), 200);
+    },
+  });
 
   const handleFormStart = () => {
     if (!formStarted) {
@@ -100,33 +115,68 @@ export default function Hero() {
               </div>
             </LuxFadeIn>
 
-            <LuxFadeIn delay={0.2}>
+            <div className="min-h-[200px]">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                Kingmaker <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.3)]">Society</span>
+                {displayedTexts[0].split(' ').map((word, index) => (
+                  <span key={index}>
+                    {index === 1 ? (
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.3)]">
+                        {word}
+                      </span>
+                    ) : (
+                      word
+                    )}
+                    {index === 0 && ' '}
+                  </span>
+                ))}
+                {displayedTexts[0] && !isComplete && showCursor && (
+                  <span className="inline-block w-1 h-12 sm:h-14 lg:h-16 bg-[#FFC300] ml-1 animate-pulse"></span>
+                )}
               </h1>
-            </LuxFadeIn>
+            </div>
 
-            <LuxFadeIn delay={0.3}>
+            <div className="min-h-[160px]">
               <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
-                A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business
-                <span className="text-[#FFC300] font-semibold"> without doing it alone.</span>
+                {displayedTexts[1] && (
+                  <>
+                    {displayedTexts[1].substring(0, displayedTexts[1].lastIndexOf('without'))}
+                    {displayedTexts[1].includes('without') && (
+                      <span className="text-[#FFC300] font-semibold">
+                        {displayedTexts[1].substring(displayedTexts[1].lastIndexOf('without'))}
+                      </span>
+                    )}
+                  </>
+                )}
+                {displayedTexts[1] && currentIndex === 1 && showCursor && (
+                  <span className="inline-block w-0.5 h-6 sm:h-7 bg-gray-300 ml-1 animate-pulse align-middle"></span>
+                )}
               </p>
               <p className="text-lg sm:text-xl text-gray-400 italic mt-4">
-                Built for men who want to lead their life, not just live it.
+                {displayedTexts[2]}
+                {displayedTexts[2] && currentIndex === 2 && showCursor && (
+                  <span className="inline-block w-0.5 h-5 sm:h-6 bg-gray-400 ml-1 animate-pulse align-middle"></span>
+                )}
               </p>
-            </LuxFadeIn>
+            </div>
 
-            <LuxFadeIn delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
-                  Start Application
-                </Button>
-                <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Book a Call
-                </Button>
-              </div>
-            </LuxFadeIn>
+            <div
+              className={`transition-all duration-700 ${
+                showCTAs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+              style={{ minHeight: '80px' }}
+            >
+              {showCTAs && (
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button variant="primary" size="lg" onClick={() => scrollToSection('application-form')}>
+                    Start Application
+                  </Button>
+                  <Button variant="outline" size="lg" onClick={() => scrollToSection('book-call')}>
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book a Call
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
 
           <LuxFadeIn delay={0.5} className="w-full">
