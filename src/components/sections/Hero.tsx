@@ -5,6 +5,7 @@ import Input from '../ui/Input';
 import Select from '../ui/Select';
 import Container from '../ui/Container';
 import LuxFadeIn from '../ui/LuxFadeIn';
+import CharacterReveal from '../ui/CharacterReveal';
 import { luxuryScrollToSection } from '../../utils/luxuryScroll';
 import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { submitLead } from '../../services/leadService';
@@ -106,15 +107,23 @@ export default function Hero() {
               </h1>
             </LuxFadeIn>
 
-            <LuxFadeIn delay={0.3}>
-              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
-                A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business
-                <span className="text-[#FFC300] font-semibold"> without doing it alone.</span>
-              </p>
-              <p className="text-lg sm:text-xl text-gray-400 italic mt-4">
+            <div className="space-y-4">
+              <CharacterReveal
+                delay={0.3}
+                charInterval={40}
+                className="text-xl sm:text-2xl text-gray-300 leading-relaxed"
+              >
+                A structured brotherhood for faith-driven men working a 9-to-5 who want to build their body, discipline, goals, and future business without doing it alone.
+              </CharacterReveal>
+
+              <CharacterReveal
+                delay={0.8}
+                charInterval={40}
+                className="text-lg sm:text-xl text-gray-400 italic"
+              >
                 Built for men who want to lead their life, not just live it.
-              </p>
-            </LuxFadeIn>
+              </CharacterReveal>
+            </div>
 
             <LuxFadeIn delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4">
