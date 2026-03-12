@@ -70,7 +70,7 @@ export default function Footer() {
 
           <div className="flex flex-col">
             <h3 className="text-white font-bold mb-6">Navigation</h3>
-            <ul className="space-y-3 flex-1">
+            <ul className="flex flex-col justify-between flex-1">
               {footerLinks.navigation.map((link, index) => (
                 <li key={index}>
                   <button
