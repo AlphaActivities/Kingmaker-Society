@@ -24,7 +24,7 @@ export default function Proof() {
   const proofGallery = [
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/7991691/pexels-photo-7991691.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      src: 'https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'MMA fighter training session showing combat discipline',
       category: 'MMA Training',
     },
