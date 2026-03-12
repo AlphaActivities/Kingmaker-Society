@@ -24,15 +24,15 @@ export default function Proof() {
   const proofGallery = [
     {
       type: 'image' as const,
-      src: 'https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      alt: 'MMA fighter training session showing combat discipline',
-      category: 'MMA Training',
-    },
-    {
-      type: 'image' as const,
       src: 'https://images.pexels.com/photos/3838937/pexels-photo-3838937.jpeg?auto=compress&cs=tinysrgb&w=1200',
       alt: 'Bodybuilding training showcasing strength and physique development',
       category: 'Bodybuilding',
+    },
+    {
+      type: 'image' as const,
+      src: 'https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      alt: 'MMA fighter training session showing combat discipline',
+      category: 'MMA Training',
     },
     {
       type: 'image' as const,

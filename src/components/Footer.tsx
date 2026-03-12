@@ -31,7 +31,7 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-[#2B2B2B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-12 mb-8">
           <div className="md:col-span-1">
             <div className="flex flex-col items-center space-y-3 mb-6">
               <img
@@ -43,15 +43,15 @@ export default function Footer() {
                 Kingmaker <span className="text-[#FFC300]">Society</span>
               </span>
             </div>
-            <div className="text-gray-400 text-sm text-center leading-relaxed space-y-2">
+            <div className="text-gray-400 text-sm text-center leading-relaxed space-y-3">
               <p className="text-gray-300">Built for men who want to lead their life, not just live it.</p>
-              <p className="text-gray-500">Where discipline meets purpose, and brotherhood fuels transformation.</p>
+              <p className="text-gray-300">Where discipline meets purpose, and brotherhood fuels transformation.</p>
             </div>
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-4">Navigation</h3>
-            <ul className="space-y-2">
+            <h3 className="text-white font-bold mb-6">Navigation</h3>
+            <ul className="space-y-3">
               {footerLinks.navigation.map((link, index) => (
                 <li key={index}>
                   <button
@@ -66,8 +66,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-4">Resources</h3>
-            <ul className="space-y-2">
+            <h3 className="text-white font-bold mb-6">Resources</h3>
+            <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
                   {link.id ? (
@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-white font-bold mb-4">Contact</h3>
+            <h3 className="text-white font-bold mb-6">Contact</h3>
             <div className="space-y-3">
               <a
                 href="mailto:contact@kingmakersociety.com"
