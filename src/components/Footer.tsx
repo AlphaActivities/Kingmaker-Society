@@ -37,7 +37,7 @@ export default function Footer() {
               <img
                 src="/images/logos/logo.PNG"
                 alt="Kingmaker Society Logo"
-                className="w-8 h-8 object-contain"
+                className="h-14 w-auto object-contain"
               />
               <span className="text-xl font-bold text-white">
                 Kingmaker

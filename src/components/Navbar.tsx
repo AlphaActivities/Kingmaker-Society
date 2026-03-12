@@ -44,7 +44,7 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }: Navbar
             <img
               src="/images/logos/logo.PNG"
               alt="Kingmaker Society Logo"
-              className="w-8 h-8 object-contain"
+              className="h-12 w-auto object-contain"
               aria-hidden="true"
             />
             <span className="text-xl font-bold text-white">
