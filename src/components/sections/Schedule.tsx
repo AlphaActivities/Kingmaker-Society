@@ -1,4 +1,4 @@
-import { Calendar, Clock, MessageSquare } from 'lucide-react';
+import { Calendar, Clock, MessageSquare, Target, Dumbbell, Heart, Users, Sparkles } from 'lucide-react';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
@@ -7,26 +7,31 @@ export default function Schedule() {
   const schedule = [
     {
       day: 'Monday',
+      icon: Target,
       focus: 'Goals, Vision & Future Business',
       description: 'Strategic planning, business development, and long-term vision casting',
     },
     {
       day: 'Tuesday',
+      icon: Dumbbell,
       focus: 'Fitness & Discipline',
       description: 'Workout strategies, physical training, and building unstoppable discipline',
     },
     {
       day: 'Wednesday',
+      icon: Heart,
       focus: 'Health & Energy Optimization',
       description: 'Nutrition, recovery, sleep, and peak performance protocols',
     },
     {
       day: 'Thursday',
+      icon: Users,
       focus: 'Brotherhood Accountability & Strategy',
       description: 'Group accountability, progress reviews, and strategic problem solving',
     },
     {
       day: 'Sunday',
+      icon: Sparkles,
       focus: 'Faith, Purpose & Identity',
       description: 'Spiritual growth, purpose alignment, and identity in Christ',
     },
@@ -64,10 +69,15 @@ export default function Schedule() {
                     <div className="relative group/badge">
                       <div className="absolute -inset-1 bg-gradient-to-r from-[#FFC300]/30 to-[#D11F2A]/30 rounded-xl blur opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500"></div>
 
-                      <div className="relative px-6 py-4 bg-gradient-to-br from-[#D11F2A] via-[#B81822] to-[#A01620] rounded-xl flex items-center justify-center shadow-xl shadow-[#D11F2A]/40 transition-all duration-500 group-hover/badge:scale-105 group-hover/badge:shadow-2xl group-hover/badge:shadow-[#D11F2A]/60 overflow-hidden">
+                      <div className="relative px-6 py-4 bg-gradient-to-br from-[#D11F2A] via-[#B81822] to-[#A01620] rounded-xl flex items-center gap-3 justify-center shadow-xl shadow-[#D11F2A]/40 transition-all duration-500 group-hover/badge:scale-105 group-hover/badge:shadow-2xl group-hover/badge:shadow-[#D11F2A]/60 overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500"></div>
 
                         <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent rounded-t-xl"></div>
+
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-[#FFC300]/20 blur-lg rounded-full opacity-0 group-hover/badge:opacity-100 transition-all duration-500 scale-150"></div>
+                          <item.icon className="relative w-6 h-6 text-[#FFC300] transition-all duration-500 group-hover/badge:scale-110 group-hover/badge:rotate-12 group-hover/badge:text-[#FFD966] drop-shadow-[0_0_10px_rgba(255,195,0,0.6)]" strokeWidth={2.5} />
+                        </div>
 
                         <span className="relative text-2xl font-bold text-white text-center min-w-[80px] drop-shadow-lg">{item.day}</span>
                       </div>
