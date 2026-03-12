@@ -39,7 +39,7 @@ export default function Footer() {
                 alt="Kingmaker Society Logo"
                 className="h-14 w-auto object-contain"
               />
-              <span className="text-xl font-bold text-white">
+              <span className="text-xl font-bold text-[#FFC300]">
                 Kingmaker Society
               </span>
             </div>
