@@ -9,9 +9,6 @@ const HERO_IMAGES_DESKTOP = [
 
 const HERO_IMAGES_MOBILE = [
   '/images/hero/bodybuilder-portrait-mobile.jpg',
-  '/images/hero/gym-equipment-mobile.jpg',
-  '/images/hero/luxury-gym-mobile.jpg',
-  '/images/hero/training-action-mobile.jpg',
 ];
 
 export default function HeroBackgroundSlider() {
@@ -60,7 +57,7 @@ export default function HeroBackgroundSlider() {
                 style={{
                   backgroundImage: `url(${image})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  backgroundPosition: isMobile ? 'center top' : 'center',
                   backgroundRepeat: 'no-repeat',
                   willChange: 'transform, opacity',
                   WebkitTransform: 'translateZ(0)',
