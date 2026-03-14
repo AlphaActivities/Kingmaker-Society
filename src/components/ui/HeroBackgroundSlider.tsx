@@ -8,7 +8,7 @@ const HERO_IMAGES_DESKTOP = [
 ];
 
 const HERO_IMAGES_MOBILE = [
-  'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'https://images.pexels.com/photos/3837757/pexels-photo-3837757.jpeg?auto=compress&cs=tinysrgb&w=800',
 ];
 
 export default function HeroBackgroundSlider() {
