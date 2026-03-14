@@ -5,6 +5,7 @@ import Input from '../ui/Input';
 import Select from '../ui/Select';
 import Container from '../ui/Container';
 import LuxFadeIn from '../ui/LuxFadeIn';
+import HeroBackgroundSlider from '../ui/HeroBackgroundSlider';
 import { luxuryScrollToSection, scrollToApplication } from '../../utils/luxuryScroll';
 import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { submitLead } from '../../services/leadService';
@@ -87,10 +88,12 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-start pt-32 bg-gradient-to-b from-black via-[#0B0B0B] to-[#0B0B0B] luxury-grain">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFGMUYxRiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
+    <section id="hero" className="relative min-h-screen flex items-start pt-32 overflow-hidden luxury-grain">
+      <HeroBackgroundSlider />
 
-      <Container className="relative z-10">
+      <div className="absolute inset-0 z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFGMUYxRiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
+
+      <Container className="relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center py-12 md:py-16 lg:py-20">
           <div className="space-y-8 -mt-8 md:mt-0">
             <LuxFadeIn delay={0.1}>
