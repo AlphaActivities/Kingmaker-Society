@@ -50,7 +50,7 @@ export default function HeroBackgroundSlider() {
 
   return (
     <>
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" style={{ transform: 'translateZ(0)' }}>
         {imagesLoaded ? (
           <div className="absolute inset-0">
             {heroImages.map((image) => (
@@ -63,6 +63,8 @@ export default function HeroBackgroundSlider() {
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',
                   willChange: 'transform, opacity',
+                  WebkitTransform: 'translateZ(0)',
+                  transform: 'translateZ(0)',
                 }}
               />
             ))}
