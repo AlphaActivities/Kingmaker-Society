@@ -8,7 +8,7 @@ const HERO_IMAGES_DESKTOP = [
 ];
 
 const HERO_IMAGES_MOBILE = [
-  '/images/hero/bodybuilder-portrait-mobile.jpg',
+  'https://images.pexels.com/photos/3490348/pexels-photo-3490348.jpeg?auto=compress&cs=tinysrgb&w=800',
 ];
 
 export default function HeroBackgroundSlider() {
