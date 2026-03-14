@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 
 const HERO_IMAGES_DESKTOP = [
   '/images/hero/bodybuilder-portrait.jpg',
-  '/images/hero/gym-equipment.jpg',
-  '/images/hero/luxury-gym.jpg',
+  'https://images.pexels.com/photos/3490348/pexels-photo-3490348.jpeg?auto=compress&cs=tinysrgb&w=1920',
   '/images/hero/training-action.jpg',
+  'https://images.pexels.com/photos/3837757/pexels-photo-3837757.jpeg?auto=compress&cs=tinysrgb&w=1920',
 ];
 
 const HERO_IMAGES_MOBILE = [
   '/images/hero/bodybuilder-portrait-mobile.jpg',
-  '/images/hero/gym-equipment-mobile.jpg',
-  '/images/hero/luxury-gym-mobile.jpg',
+  'https://images.pexels.com/photos/3490348/pexels-photo-3490348.jpeg?auto=compress&cs=tinysrgb&w=800',
   '/images/hero/training-action-mobile.jpg',
+  'https://images.pexels.com/photos/3837757/pexels-photo-3837757.jpeg?auto=compress&cs=tinysrgb&w=800',
 ];
 
 export default function HeroBackgroundSlider() {
