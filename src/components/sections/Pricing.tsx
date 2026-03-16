@@ -152,11 +152,42 @@ export default function Pricing() {
       </div>
 
       <LuxFadeIn delay={0.5}>
-        <Card variant="premium" className="p-8 text-center mt-12">
-          <p className="text-xl text-white">
-            All memberships are month-to-month. Cancel anytime. Your transformation is our priority.
-          </p>
-        </Card>
+        <div className="relative mt-16 group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#D11F2A]/30 via-[#FFC300]/30 to-[#D11F2A]/30 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
+
+          <div className="relative bg-gradient-to-br from-[#1B1B1B]/98 to-[#2B2B2B]/98 border-2 border-[#FFC300]/40 rounded-2xl p-10 md:p-12 backdrop-blur-md luxury-grain overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.5),0_4px_16px_rgba(255,195,0,0.2)]">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FFC300]/5 via-[#D11F2A]/5 to-[#FFC300]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FFC300] to-transparent"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D11F2A] to-transparent"></div>
+
+            <div className="absolute top-1/2 left-0 w-1 h-32 bg-gradient-to-b from-transparent via-[#FFC300] to-transparent -translate-y-1/2"></div>
+            <div className="absolute top-1/2 right-0 w-1 h-32 bg-gradient-to-b from-transparent via-[#FFC300] to-transparent -translate-y-1/2"></div>
+
+            <div className="relative z-10 text-center">
+              <div className="flex items-center justify-center space-x-3 mb-4">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#FFC300]"></div>
+                <div className="w-2 h-2 bg-[#FFC300] rounded-full animate-pulse shadow-[0_0_10px_rgba(255,195,0,0.6)]"></div>
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#FFC300]"></div>
+              </div>
+
+              <p className="text-2xl md:text-3xl font-bold text-white mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                Flexible <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD700] to-[#FFC300]">Membership</span>
+              </p>
+
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                All memberships are <span className="text-[#FFC300] font-semibold">month-to-month</span>. Cancel anytime.
+                <span className="block mt-2 text-white font-semibold">Your transformation is our priority.</span>
+              </p>
+
+              <div className="flex items-center justify-center space-x-3 mt-4">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#D11F2A]"></div>
+                <div className="w-2 h-2 bg-[#D11F2A] rounded-full animate-pulse shadow-[0_0_10px_rgba(209,31,42,0.6)]"></div>
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#D11F2A]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </LuxFadeIn>
     </Section>
   );
