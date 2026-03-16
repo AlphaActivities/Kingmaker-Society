@@ -2,8 +2,13 @@ import { Facebook, Instagram, Youtube, Link as LinkIcon, MessageCircle } from 'l
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
+import { useCountUp } from '../../hooks/useCountUp';
+import { useInViewport } from '../../hooks/useInViewport';
 
 export default function SocialProof() {
+  const { ref: statsRef, isInViewport } = useInViewport({ threshold: 0.3 });
+  const membersCount = useCountUp({ end: 500, duration: 2500, enabled: isInViewport });
+  const transformationsCount = useCountUp({ end: 1000, duration: 2500, enabled: isInViewport });
   const socialLinks = [
     {
       name: 'Facebook',
@@ -118,29 +123,33 @@ export default function SocialProof() {
         </div>
       </LuxFadeIn>
 
-      <div className="grid md:grid-cols-3 gap-8 mt-12">
-        {stats.map((stat, index) => (
-          <LuxFadeIn key={index} delay={0.2 + index * 0.1}>
-            <div className="group relative p-8 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl hover:border-[#FFC300]/60 transition-all duration-500 hover:scale-105 luxury-grain overflow-hidden">
-              <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
+      <div ref={statsRef} className="grid md:grid-cols-3 gap-8 mt-12">
+        {stats.map((stat, index) => {
+          const displayValue = index === 0 ? `${membersCount}+` : index === 1 ? `${transformationsCount}+` : stat.value;
 
-              <div className="relative text-center space-y-3">
-                <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                  {stat.icon}
+          return (
+            <LuxFadeIn key={index} delay={0.2 + index * 0.1}>
+              <div className="group relative p-8 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl hover:border-[#FFC300]/60 transition-all duration-500 hover:scale-105 luxury-grain overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
+
+                <div className="relative text-center space-y-3">
+                  <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <div className={`text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,195,0,0.3)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.6)] transition-all duration-500`}>
+                    {displayValue}
+                  </div>
+                  <p className="text-gray-300 text-lg font-semibold group-hover:text-white transition-colors duration-300">
+                    {stat.label}
+                  </p>
                 </div>
-                <div className={`text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,195,0,0.3)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.6)] transition-all duration-500`}>
-                  {stat.value}
-                </div>
-                <p className="text-gray-300 text-lg font-semibold group-hover:text-white transition-colors duration-300">
-                  {stat.label}
-                </p>
+
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
-          </LuxFadeIn>
-        ))}
+            </LuxFadeIn>
+          );
+        })}
       </div>
     </Section>
   );

@@ -26,16 +26,20 @@ export default function FinalCTA() {
         <img
           src="/images/posters/kingmaker-rise-above-the-ordinary-poster.png"
           alt=""
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-20 animate-[hero-ken-burns_20s_ease-out_infinite]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/70 to-[#0B0B0B]/90"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#D11F2A]/10 to-[#FFC300]/10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FFC300]/10 rounded-full blur-[150px] animate-pulse"></div>
       </div>
 
       <div className="relative z-10">
         <div className="relative text-center max-w-4xl mx-auto space-y-8">
           <LuxFadeIn>
-            <Crown className="w-20 h-20 text-[#FFC300] mx-auto drop-shadow-[0_0_30px_rgba(255,195,0,0.4)]" />
+            <div className="relative inline-block">
+              <Crown className="w-20 h-20 text-[#FFC300] mx-auto drop-shadow-[0_0_40px_rgba(255,195,0,0.6)] animate-pulse" />
+              <div className="absolute -inset-4 bg-[#FFC300]/20 rounded-full blur-2xl animate-pulse"></div>
+            </div>
           </LuxFadeIn>
 
           <LuxFadeIn delay={0.1}>
@@ -64,23 +68,24 @@ export default function FinalCTA() {
               Are you ready to lead your life, not just live it?
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button
                 variant="secondary"
                 size="lg"
                 onClick={handleApplyClick}
-                className="text-lg group"
+                className="text-lg group relative overflow-hidden shadow-[0_0_40px_rgba(255,195,0,0.3)] hover:shadow-[0_0_60px_rgba(255,195,0,0.5)] animate-pulse-glow transform hover:scale-105 transition-all duration-300"
               >
-                <span className="flex items-center justify-center">
+                <span className="flex items-center justify-center relative z-10">
                   Start Your Application
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 onClick={handleBookCallClick}
-                className="text-lg whitespace-nowrap"
+                className="text-lg whitespace-nowrap hover:scale-105 transition-transform duration-300"
               >
                 Book a Strategy Call
               </Button>

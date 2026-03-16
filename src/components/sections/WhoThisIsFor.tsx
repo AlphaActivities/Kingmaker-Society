@@ -57,14 +57,14 @@ export default function WhoThisIsFor() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {qualifications.map((qual, index) => (
           <LuxFadeIn key={index} delay={index * 0.1}>
-            <Card variant="premium" hover className="p-6 h-full">
+            <Card variant="premium" hover className="p-6 h-full group">
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#D11F2A] to-[#A01620] rounded-lg flex items-center justify-center">
-                  <qual.icon className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#D11F2A] to-[#A01620] rounded-lg flex items-center justify-center shadow-lg shadow-[#D11F2A]/30 group-hover:shadow-[#D11F2A]/60 group-hover:scale-110 transition-all duration-300">
+                  <qual.icon className="w-6 h-6 text-white drop-shadow-lg" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-2">{qual.title}</h3>
-                  <p className="text-gray-400">{qual.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#FFC300] transition-colors duration-300">{qual.title}</h3>
+                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{qual.description}</p>
                 </div>
               </div>
             </Card>

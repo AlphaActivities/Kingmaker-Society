@@ -20,7 +20,7 @@ export default function Input({ label, error, className = '', id, ...props }: In
         id={inputId}
         aria-invalid={error ? 'true' : 'false'}
         aria-describedby={error ? errorId : undefined}
-        className={`w-full px-4 py-3 bg-[#2B2B2B] border border-[#3B3B3B] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#FFC300] focus:ring-2 focus:ring-[#FFC300]/20 transition-all duration-200 ${className}`}
+        className={`w-full px-4 py-3 bg-[#2B2B2B]/80 border-2 border-[#3B3B3B] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#FFC300] focus:ring-4 focus:ring-[#FFC300]/30 focus:bg-[#2B2B2B] focus:shadow-[0_0_20px_rgba(255,195,0,0.15)] transition-all duration-300 ${className}`}
         {...props}
       />
       {error && (

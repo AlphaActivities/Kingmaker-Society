@@ -10,13 +10,19 @@ interface NavbarProps {
 
 export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      setScrollProgress(scrolled);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -34,20 +40,26 @@ export default function Navbar({ isMobileMenuOpen, setIsMobileMenuOpen }: Navbar
           : 'bg-[#0B0B0B]/30 backdrop-blur-sm border-b border-transparent'
       }`}
     >
+      <div
+        className="absolute top-0 left-0 h-1 bg-gradient-to-r from-[#D11F2A] via-[#FFC300] to-[#D11F2A] transition-all duration-300 shadow-[0_0_10px_rgba(255,195,0,0.5)]"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      ></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <button
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center space-x-2 cursor-pointer group"
             onClick={() => scrollToSection('hero')}
             aria-label="Go to homepage"
           >
             <img
               src="/images/logos/logo.PNG"
               alt="Kingmaker Society Logo"
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(255,195,0,0.4)]"
               aria-hidden="true"
             />
-            <span className="text-xl font-bold text-white">
+            <span className="text-xl font-bold text-white transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(255,195,0,0.3)]">
               Kingmaker <span className="text-[#FFC300]">Society</span>
             </span>
           </button>

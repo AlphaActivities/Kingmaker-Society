@@ -93,20 +93,23 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFGMUYxRiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
 
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FFC300]/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#D11F2A]/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+
       <Container className="relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center py-12 md:py-16 lg:py-20">
           <div className="space-y-8 -mt-8 md:mt-0">
             <LuxFadeIn delay={0.1}>
-              <div className="inline-flex items-center space-x-2 px-4 py-2 bg-[#D11F2A]/10 border border-[#D11F2A]/30 rounded-full">
-                <Shield className="w-4 h-4 text-[#D11F2A]" />
-                <span className="text-sm font-semibold text-[#D11F2A]">Elite Brotherhood</span>
+              <div className="inline-flex items-center space-x-2 px-5 py-2.5 bg-[#D11F2A]/10 border-2 border-[#D11F2A]/40 rounded-full shadow-lg shadow-[#D11F2A]/20 hover:shadow-[#D11F2A]/40 hover:scale-105 transition-all duration-300 animate-pulse-glow-subtle">
+                <Shield className="w-5 h-5 text-[#D11F2A] drop-shadow-[0_0_8px_rgba(209,31,42,0.6)]" />
+                <span className="text-sm font-bold text-[#D11F2A] drop-shadow-[0_0_8px_rgba(209,31,42,0.3)]">Elite Brotherhood</span>
               </div>
             </LuxFadeIn>
 
             <LuxFadeIn delay={0.2}>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Kingmaker</span>{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_30px_rgba(255,195,0,0.4)]">Society</span>
+                <span className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] hover:drop-shadow-[0_4px_30px_rgba(255,255,255,0.2)] transition-all duration-500">Kingmaker</span>{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] drop-shadow-[0_0_40px_rgba(255,195,0,0.6)] animate-gradient-shift">Society</span>
               </h1>
             </LuxFadeIn>
 
@@ -146,7 +149,7 @@ export default function Hero() {
                 </div>
               </div>
             ) : (
-              <form id="application-form" onSubmit={handleSubmit} className="bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-[#FFC300]/20 hover:border-[#FFC300]/50 hover:shadow-[#FFC300]/30 transition-all duration-500 backdrop-blur-sm luxury-grain">
+              <form id="application-form" onSubmit={handleSubmit} className="relative bg-gradient-to-br from-[#1B1B1B]/98 to-[#2B2B2B]/98 border-2 border-[#FFC300]/40 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(255,195,0,0.25)] hover:border-[#FFC300]/60 hover:shadow-[0_12px_48px_rgba(255,195,0,0.35)] transition-all duration-500 backdrop-blur-md luxury-grain before:absolute before:inset-0 before:rounded-2xl before:p-[2px] before:bg-gradient-to-br before:from-[#FFC300]/20 before:via-transparent before:to-[#D11F2A]/20 before:-z-10 before:blur-sm">
                 <h3 className="text-2xl font-bold text-white mb-6">
                   Start Your Application
                 </h3>

@@ -28,6 +28,9 @@ export default function Pricing() {
       ],
       variant: 'premium' as const,
       recommended: false,
+      bgGradient: 'from-[#3B3B3B]/40 to-[#2B2B2B]/40',
+      borderColor: 'border-[#5B5B5B]/40',
+      glowColor: '',
     },
     {
       name: 'VIP Access',
@@ -45,6 +48,9 @@ export default function Pricing() {
       ],
       variant: 'premium' as const,
       recommended: false,
+      bgGradient: 'from-[#8B6914]/20 to-[#D4A000]/10',
+      borderColor: 'border-[#D4A000]/40',
+      glowColor: 'shadow-[0_8px_32px_rgba(212,160,0,0.2)]',
     },
     {
       name: 'Elite Access',
@@ -64,6 +70,9 @@ export default function Pricing() {
       ],
       variant: 'gold' as const,
       recommended: true,
+      bgGradient: 'from-[#FFC300]/20 to-[#D4A000]/20',
+      borderColor: 'border-[#FFC300]/60',
+      glowColor: 'shadow-[0_12px_48px_rgba(255,195,0,0.3)]',
     },
   ];
 
@@ -87,23 +96,28 @@ export default function Pricing() {
       <div className="grid md:grid-cols-3 gap-8">
         {tiers.map((tier, index) => (
           <LuxFadeIn key={index} delay={index * 0.15}>
-            <Card
-              variant={tier.variant}
-              className={`p-8 relative h-full ${tier.recommended ? 'md:scale-105 md:shadow-2xl hover:-translate-y-1 hover:shadow-[#FFC300]/40' : 'hover:-translate-y-1'} transition-all duration-500`}
-            >
+            <div className={`relative ${tier.recommended ? 'md:scale-110 z-10' : ''}`}>
+              {tier.recommended && (
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC300]/30 via-[#FFD700]/20 to-[#FFC300]/30 rounded-3xl blur-2xl animate-pulse"></div>
+              )}
+              <Card
+                variant={tier.variant}
+                className={`p-8 relative h-full bg-gradient-to-br ${tier.bgGradient} backdrop-blur-md border-2 ${tier.borderColor} ${tier.glowColor} ${tier.recommended ? 'hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(255,195,0,0.4)] animate-pulse-glow' : 'hover:-translate-y-1'} transition-all duration-500`}
+              >
             {tier.badge && (
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gradient-to-r from-[#D11F2A] to-[#A01620] px-4 py-1 rounded-full flex items-center space-x-1 shadow-lg">
-                  <Star className="w-4 h-4 text-white" />
-                  <span className="text-sm font-bold text-white">{tier.badge}</span>
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                <div className={`${tier.recommended ? 'bg-gradient-to-r from-[#FFC300] via-[#FFD700] to-[#FFC300] animate-gradient-shift' : 'bg-gradient-to-r from-[#D11F2A] to-[#A01620]'} px-5 py-2 rounded-full flex items-center space-x-2 shadow-[0_4px_20px_rgba(255,195,0,0.4)] border-2 border-white/20`}>
+                  <Star className={`w-4 h-4 ${tier.recommended ? 'text-black' : 'text-white'} drop-shadow-lg`} />
+                  <span className={`text-sm font-bold ${tier.recommended ? 'text-black' : 'text-white'} drop-shadow-lg`}>{tier.badge}</span>
                 </div>
               </div>
             )}
 
             <div className="text-center mb-8 pt-4">
-              <h3 className="text-2xl font-bold text-white mb-4">{tier.name}</h3>
+              {tier.recommended && <Crown className="w-12 h-12 text-[#FFC300] mx-auto mb-4 drop-shadow-[0_0_20px_rgba(255,195,0,0.6)] animate-pulse" />}
+              <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">{tier.name}</h3>
               <div className="flex items-baseline justify-center space-x-2">
-                <span className="text-5xl font-bold text-[#FFC300]">${tier.price}</span>
+                <span className={`text-5xl font-bold ${tier.recommended ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD700] to-[#FFC300] animate-gradient-shift' : 'text-[#FFC300]'} drop-shadow-[0_0_20px_rgba(255,195,0,0.3)]`}>${tier.price}</span>
                 <span className="text-gray-400">/month</span>
               </div>
             </div>
@@ -132,6 +146,7 @@ export default function Pricing() {
               </p>
             )}
           </Card>
+            </div>
           </LuxFadeIn>
         ))}
       </div>
