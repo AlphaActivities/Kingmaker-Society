@@ -48,9 +48,9 @@ export default function Pricing() {
       ],
       variant: 'premium' as const,
       recommended: false,
-      bgGradient: 'from-[#8B6914]/20 to-[#D4A000]/10',
-      borderColor: 'border-[#D4A000]/40',
-      glowColor: 'shadow-[0_8px_32px_rgba(212,160,0,0.2)]',
+      bgGradient: 'from-[#D11F2A]/15 to-[#8B1F1F]/10',
+      borderColor: 'border-[#D11F2A]/50',
+      glowColor: 'shadow-[0_10px_40px_rgba(209,31,42,0.25)]',
     },
     {
       name: 'Elite Access',
@@ -93,16 +93,19 @@ export default function Pricing() {
         </div>
       </LuxFadeIn>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-12 items-center">
         {tiers.map((tier, index) => (
           <LuxFadeIn key={index} delay={index * 0.15}>
-            <div className={`relative ${tier.recommended ? 'md:scale-110 z-10' : ''}`}>
+            <div className={`relative ${tier.recommended ? 'md:scale-105 z-10' : tier.badge === 'Popular' ? 'md:scale-100' : 'md:scale-95'}`}>
               {tier.recommended && (
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC300]/30 via-[#FFD700]/20 to-[#FFC300]/30 rounded-3xl blur-2xl animate-pulse"></div>
               )}
+              {tier.badge === 'Popular' && (
+                <div className="absolute -inset-3 bg-gradient-to-r from-[#D11F2A]/25 via-[#FFC300]/15 to-[#D11F2A]/25 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+              )}
               <Card
                 variant={tier.variant}
-                className={`p-8 relative h-full bg-gradient-to-br ${tier.bgGradient} backdrop-blur-md border-2 ${tier.borderColor} ${tier.glowColor} ${tier.recommended ? 'hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(255,195,0,0.4)] animate-pulse-glow' : 'hover:-translate-y-1'} transition-all duration-500`}
+                className={`p-10 relative h-full bg-gradient-to-br ${tier.bgGradient} backdrop-blur-md border-2 ${tier.borderColor} ${tier.glowColor} ${tier.recommended ? 'hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(255,195,0,0.4)] animate-pulse-glow' : tier.badge === 'Popular' ? 'hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(209,31,42,0.3)] transition-all duration-500 group' : 'hover:-translate-y-1'} transition-all duration-500`}
               >
             {tier.badge && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
@@ -113,31 +116,32 @@ export default function Pricing() {
               </div>
             )}
 
-            <div className="text-center mb-8 pt-4">
+            <div className="text-center mb-10 pt-4">
               {tier.recommended && <Crown className="w-12 h-12 text-[#FFC300] mx-auto mb-4 drop-shadow-[0_0_20px_rgba(255,195,0,0.6)] animate-pulse" />}
-              <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">{tier.name}</h3>
+              {tier.badge === 'Popular' && <Star className="w-10 h-10 text-[#D11F2A] mx-auto mb-4 drop-shadow-[0_0_16px_rgba(209,31,42,0.6)] animate-pulse" />}
+              <h3 className="text-2xl font-bold text-white mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">{tier.name}</h3>
               <div className="flex items-baseline justify-center space-x-2">
-                <span className={`text-5xl font-bold ${tier.recommended ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD700] to-[#FFC300] animate-gradient-shift' : 'text-[#FFC300]'} drop-shadow-[0_0_20px_rgba(255,195,0,0.3)]`}>${tier.price}</span>
+                <span className={`text-5xl font-bold ${tier.recommended ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#FFC300] via-[#FFD700] to-[#FFC300] animate-gradient-shift' : tier.badge === 'Popular' ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#D11F2A] via-[#FF4444] to-[#D11F2A]' : 'text-[#FFC300]'} drop-shadow-[0_0_20px_rgba(255,195,0,0.3)]`}>${tier.price}</span>
                 <span className="text-gray-400">/month</span>
               </div>
             </div>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-5 mb-10">
               {tier.features.map((feature, fIndex) => (
                 <div key={fIndex} className="flex items-start space-x-3">
-                  <Check className="w-5 h-5 text-[#FFC300] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">{feature}</span>
+                  <Check className={`w-5 h-5 ${tier.recommended ? 'text-[#FFC300]' : tier.badge === 'Popular' ? 'text-[#D11F2A]' : 'text-[#FFC300]'} flex-shrink-0 mt-0.5`} />
+                  <span className="text-gray-300 leading-relaxed">{feature}</span>
                 </div>
               ))}
             </div>
 
             <Button
-              variant={tier.recommended ? 'secondary' : 'primary'}
+              variant={tier.recommended ? 'secondary' : tier.badge === 'Popular' ? 'primary' : 'primary'}
               size="lg"
-              className="w-full"
+              className={`w-full ${tier.badge === 'Popular' ? 'bg-gradient-to-r from-[#D11F2A] to-[#A01620] hover:from-[#FF1F2A] hover:to-[#D11F2A] shadow-[0_4px_20px_rgba(209,31,42,0.4)] hover:shadow-[0_6px_28px_rgba(209,31,42,0.6)]' : ''}`}
               onClick={() => handleJoinTier(tier.name, tier.price, tier.stripeLink)}
             >
-              {tier.recommended ? 'Join Elite' : 'Get Started'}
+              {tier.recommended ? 'Join Elite' : tier.badge === 'Popular' ? 'Join VIP' : 'Get Started'}
             </Button>
 
             {tier.recommended && (
