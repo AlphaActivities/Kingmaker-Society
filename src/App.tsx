@@ -51,7 +51,7 @@ export default function App() {
         isOpen={isMembersModalOpen}
         onClose={() => setIsMembersModalOpen(false)}
       />
-      <div className="min-h-screen bg-[#0B0B0B] text-white">
+      <div className="min-h-screen bg-[#0B0B0B] text-white overflow-x-hidden">
         <Navbar
           isMobileMenuOpen={isMobileMenuOpen}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
