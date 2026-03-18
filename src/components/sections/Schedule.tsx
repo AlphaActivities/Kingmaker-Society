@@ -101,7 +101,7 @@ export default function Schedule() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FFC300]/40 via-[#D11F2A]/30 to-[#FFC300]/40 rounded-2xl opacity-0 group-hover/info:opacity-100 blur transition-all duration-700 group-hover/info:blur-lg"></div>
 
             <Card variant="gold" className="relative p-8 h-full overflow-hidden transition-all duration-500 group-hover/info:shadow-2xl group-hover/info:shadow-[#FFC300]/20 group-hover/info:-translate-y-1">
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-[#FFC300]/15 via-[#FFC300]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
+              <div className="absolute -top-12 right-0 w-64 h-64 bg-gradient-to-br from-[#FFC300]/15 via-[#FFC300]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
 
               <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FFC300]/50 to-transparent opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
 
@@ -131,7 +131,7 @@ export default function Schedule() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FFC300]/40 via-[#D11F2A]/30 to-[#FFC300]/40 rounded-2xl opacity-0 group-hover/info:opacity-100 blur transition-all duration-700 group-hover/info:blur-lg"></div>
 
             <Card variant="gold" className="relative p-8 h-full overflow-hidden transition-all duration-500 group-hover/info:shadow-2xl group-hover/info:shadow-[#FFC300]/20 group-hover/info:-translate-y-1">
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-[#FFC300]/15 via-[#FFC300]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
+              <div className="absolute -top-12 right-0 w-64 h-64 bg-gradient-to-br from-[#FFC300]/15 via-[#FFC300]/5 to-transparent rounded-full blur-3xl transition-all duration-700 group-hover/info:scale-150"></div>
 
               <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FFC300]/50 to-transparent opacity-0 group-hover/info:opacity-100 transition-opacity duration-500"></div>
 

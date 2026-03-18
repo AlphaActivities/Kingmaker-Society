@@ -23,7 +23,7 @@ export default function Section({
   };
 
   return (
-    <section id={id} className={`pt-20 ${backgrounds[background]} ${className}`}>
+    <section id={id} className={`pt-20 overflow-x-hidden ${backgrounds[background]} ${className}`}>
       <Container maxWidth={containerSize}>
         <div className="pt-0 md:pt-0 lg:pt-0 pb-16 md:pb-24 lg:pb-32">
           {children}
