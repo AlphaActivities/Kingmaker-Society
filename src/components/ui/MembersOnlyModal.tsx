@@ -114,7 +114,7 @@ export default function MembersOnlyModal({ isOpen, onClose }: MembersOnlyModalPr
                 className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-30 group"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5 transition-transform group-hover:rotate-90 duration-300 origin-center" />
+                <X className="w-5 h-5 transition-transform group-hover:rotate-90 duration-300 origin-center transform rotate-0" />
               </button>
 
               <div className="text-center space-y-6">

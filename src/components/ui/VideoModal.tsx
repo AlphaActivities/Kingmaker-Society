@@ -113,7 +113,7 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
               >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFC300]/40 to-[#D11F2A]/40 opacity-0 hover:opacity-100 transition-opacity duration-300 blur-xl" />
 
-                <X className="w-6 h-6 relative z-10 transition-transform group-hover:rotate-90 duration-300 origin-center" />
+                <X className="w-6 h-6 z-10 transition-transform group-hover:rotate-90 duration-300 origin-center transform rotate-0" />
               </button>
 
               {!videoLoaded && (
