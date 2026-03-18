@@ -42,8 +42,9 @@
     }
   }
 
-  body.modal-open {
-    overflow: hidden;
+  body.modal-open,
+  html:has(body.modal-open) {
+    overflow: hidden !important;
   }
 
   body {

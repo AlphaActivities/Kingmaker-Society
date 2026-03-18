@@ -52,10 +52,16 @@ export default function MembersOnlyModal({ isOpen, onClose }: MembersOnlyModalPr
   return (
     <>
       <div
-        className={`fixed inset-0 z-[200] ${
+        className={`fixed z-[200] ${
           isExiting ? 'opacity-0' : 'animate-modal-backdrop-enter'
         }`}
         style={{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
           background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.75) 100%)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
