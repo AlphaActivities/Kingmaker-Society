@@ -12,15 +12,18 @@ export default function MembersOnlyModal({ isOpen, onClose }: MembersOnlyModalPr
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      setIsExiting(false);
-    } else {
-      document.body.style.overflow = '';
-    }
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const originalPadding = window.getComputedStyle(document.body).paddingRight;
 
-    return () => {
-      document.body.style.overflow = '';
-    };
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${parseInt(originalPadding) + scrollbarWidth}px`;
+      setIsExiting(false);
+
+      return () => {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = originalPadding;
+      };
+    }
   }, [isOpen]);
 
   const handleClose = () => {
@@ -58,9 +61,9 @@ export default function MembersOnlyModal({ isOpen, onClose }: MembersOnlyModalPr
           isExiting ? 'opacity-0' : 'animate-modal-backdrop-enter'
         }`}
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.97) 100%)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
+          background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.85) 100%)',
+          backdropFilter: 'blur(18px)',
+          WebkitBackdropFilter: 'blur(18px)',
           transition: 'opacity 350ms cubic-bezier(0.4, 0, 0.6, 1)',
         }}
         onClick={handleClose}
