@@ -76,7 +76,6 @@ export default function HeroBackgroundSlider() {
           className="absolute inset-0"
           style={{
             background: isMobile ? 'rgba(0, 0, 0, 0.60)' : 'rgba(0, 0, 0, 0.55)',
-            mixBlendMode: 'multiply',
           }}
         />
         <div
