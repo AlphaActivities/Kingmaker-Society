@@ -163,17 +163,13 @@ export default function SocialProof({ onMembersClick }: SocialProofProps) {
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
 
-                <div className="relative text-center space-y-4">
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${stat.gradient} blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500`}></div>
-                    <div className={`relative w-full h-full rounded-3xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center transform group-hover:scale-110 transition-all duration-500 shadow-2xl ${stat.glowColor}`}>
-                      <stat.icon
-                        size={52}
-                        strokeWidth={2.5}
-                        className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
-                      />
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 via-transparent to-white/20"></div>
-                    </div>
+                <div className="relative text-center space-y-3">
+                  <div className="w-20 h-20 mx-auto mb-3 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                    <stat.icon
+                      size={48}
+                      strokeWidth={2.5}
+                      className={`text-[#FFC300] drop-shadow-[0_2px_10px_rgba(255,195,0,0.4)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.7)] transition-all duration-300`}
+                    />
                   </div>
                   <div className={`text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,195,0,0.3)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.6)] transition-all duration-500`}>
                     {displayValue}
