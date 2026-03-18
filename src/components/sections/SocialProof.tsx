@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube, Link as LinkIcon, MessageCircle } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Link as LinkIcon, MessageCircle, Users, Flame, Phone } from 'lucide-react';
 import Section from '../ui/Section';
 import Card from '../ui/Card';
 import LuxFadeIn from '../ui/LuxFadeIn';
@@ -76,21 +76,21 @@ export default function SocialProof({ onMembersClick }: SocialProofProps) {
       label: 'Active Members',
       gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
       glowColor: 'group-hover:shadow-[#FFC300]/60',
-      icon: '👥',
+      icon: Users,
     },
     {
       value: '1000+',
       label: 'Transformations',
       gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
       glowColor: 'group-hover:shadow-[#FFC300]/60',
-      icon: '🔥',
+      icon: Flame,
     },
     {
       value: 'Daily',
       label: 'Accountability Calls',
       gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
       glowColor: 'group-hover:shadow-[#FFC300]/60',
-      icon: '📞',
+      icon: Phone,
     },
   ];
 
@@ -164,8 +164,12 @@ export default function SocialProof({ onMembersClick }: SocialProofProps) {
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
 
                 <div className="relative text-center space-y-3">
-                  <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-                    {stat.icon}
+                  <div className="w-20 h-20 mx-auto mb-3 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                    <stat.icon
+                      size={48}
+                      strokeWidth={2.5}
+                      className={`text-[#FFC300] drop-shadow-[0_2px_10px_rgba(255,195,0,0.4)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.7)] transition-all duration-300`}
+                    />
                   </div>
                   <div className={`text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,195,0,0.3)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.6)] transition-all duration-500`}>
                     {displayValue}
