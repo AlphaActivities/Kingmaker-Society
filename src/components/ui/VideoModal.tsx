@@ -15,16 +15,17 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
   useEffect(() => {
     if (isOpen) {
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      const originalPadding = window.getComputedStyle(document.body).paddingRight;
 
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = `${parseInt(originalPadding) + scrollbarWidth}px`;
       setVideoLoaded(false);
       setIsExiting(false);
 
       return () => {
         document.body.style.overflow = '';
-        document.body.style.paddingRight = originalPadding;
+        document.body.style.paddingRight = '';
       };
     }
   }, [isOpen]);
@@ -57,9 +58,9 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
           isExiting ? 'opacity-0' : 'animate-modal-backdrop-enter'
         }`}
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.85) 100%)',
-          backdropFilter: 'blur(18px)',
-          WebkitBackdropFilter: 'blur(18px)',
+          background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.75) 100%)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
           transition: 'opacity 350ms cubic-bezier(0.4, 0, 0.6, 1)',
         }}
         onClick={handleClose}
