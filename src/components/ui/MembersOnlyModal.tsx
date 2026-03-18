@@ -12,11 +12,17 @@ export default function MembersOnlyModal({ isOpen, onClose }: MembersOnlyModalPr
 
   useEffect(() => {
     if (isOpen) {
+      const scrollY = window.scrollY;
+      document.documentElement.classList.add('modal-open');
       document.body.classList.add('modal-open');
+      document.body.style.top = `-${scrollY}px`;
       setIsExiting(false);
 
       return () => {
+        document.documentElement.classList.remove('modal-open');
         document.body.classList.remove('modal-open');
+        document.body.style.top = '';
+        window.scrollTo(0, scrollY);
       };
     }
   }, [isOpen]);
