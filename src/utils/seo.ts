@@ -24,26 +24,17 @@ export const generateOrganizationSchema = () => {
     url: 'https://kingmakersociety.com',
     logo: 'https://kingmakersociety.com/logo.png',
     description: 'A structured brotherhood for faith-driven men building discipline, fitness, purpose, and future business through accountability and mentorship.',
-    founder: [
-      {
-        '@type': 'Person',
-        name: 'Jordan Ali',
-        jobTitle: 'Founder',
-        description: 'Professional MMA fighter, business owner, and man of God'
-      },
-      {
-        '@type': 'Person',
-        name: 'Christopher Valdez',
-        jobTitle: 'Co-Founder',
-        description: 'Co-founder committed to building the community and setting the standard'
-      }
-    ],
+    founder: {
+      '@type': 'Person',
+      name: 'Jordan Ali',
+      jobTitle: 'Founder',
+      description: 'Professional MMA fighter, business owner, and man of God'
+    },
     sameAs: [
       'https://www.facebook.com/share/1AjDsJoufe/?mibextid=wwXIfr',
       'https://www.instagram.com/kingmakersocial?igsh=YXdveTkyczZkazgy',
       'https://www.tiktok.com/@kingmaker.society?_r=1&_t=ZP-946vWbtdl9S',
-      'https://www.youtube.com/@KINGMAKERSOCIETY',
-      'https://discord.gg/hHSuV4tSm'
+      'https://www.youtube.com/@KINGMAKERSOCIETY'
     ]
   };
 };
@@ -79,7 +70,7 @@ export const generateMembershipSchema = () => {
         name: 'General Access',
         price: '30.00',
         priceCurrency: 'USD',
-        description: '24/7 Discord access and live Zoom calls'
+        description: '24/7 private member community access and live Zoom calls'
       },
       {
         '@type': 'Offer',
@@ -114,10 +105,10 @@ export const generateFAQSchema = () => {
       },
       {
         '@type': 'Question',
-        name: 'Who are the founders?',
+        name: 'Who is the founder?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Kingmaker Society was founded by Jordan Ali, a professional MMA fighter and business owner, and co-founded by Christopher Valdez, who is fully committed to building the community.'
+          text: 'Kingmaker Society was founded by Jordan Ali, a professional MMA fighter, business owner, and man of God who created a high-accountability environment where men sharpen men through structure, brotherhood, and real action.'
         }
       },
       {

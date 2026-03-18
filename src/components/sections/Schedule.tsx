@@ -148,7 +148,7 @@ export default function Schedule() {
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-white mb-3 transition-all duration-300 group-hover/info:text-transparent group-hover/info:bg-clip-text group-hover/info:bg-gradient-to-r group-hover/info:from-[#FFC300] group-hover/info:to-[#FFD966]">Live Schedule</h3>
                   <p className="text-gray-300 break-words leading-relaxed transition-colors duration-300 group-hover/info:text-gray-200">
-                    The latest schedule and call links are always pinned inside our <span className="text-[#FFC300] font-semibold">Discord community</span>.
+                    The latest schedule and call links are always shared inside our <span className="text-[#FFC300] font-semibold">private member community</span>.
                   </p>
                 </div>
               </div>

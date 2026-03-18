@@ -17,9 +17,9 @@ export default function Pricing() {
       name: 'General Access',
       price: 30,
       badge: null,
-      stripeLink: 'https://buy.stripe.com/9B6dR87h74wuavg7AI0f',
+      stripeLink: 'https://buy.stripe.com/9B6dR87h74wuavgf0M7AI0f',
       features: [
-        '24/7 access to the Kingmaker Society Discord brotherhood',
+        '24/7 access to the Kingmaker Society private member brotherhood',
         'Access to live Zoom calls covering Faith, Fitness, Health, Mindset, Goals',
         'Structured pillar system',
         'Community accountability and brotherhood support',

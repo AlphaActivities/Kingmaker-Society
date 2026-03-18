@@ -1,7 +1,11 @@
 import { Mail, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import { luxuryScrollToSection } from '../utils/luxuryScroll';
 
-export default function Footer() {
+interface FooterProps {
+  onMembersClick?: () => void;
+}
+
+export default function Footer({ onMembersClick }: FooterProps) {
   const scrollToSection = (id: string) => {
     luxuryScrollToSection(id, 80);
   };
@@ -22,28 +26,32 @@ export default function Footer() {
       href: 'https://www.facebook.com/share/1AjDsJoufe/?mibextid=wwXIfr',
       label: 'Facebook',
       gradient: 'from-blue-600 to-blue-400',
-      hoverGlow: 'hover:shadow-blue-500/50'
+      hoverGlow: 'hover:shadow-blue-500/50',
+      isExternal: true,
     },
     {
       icon: Instagram,
       href: 'https://www.instagram.com/kingmakersocial?igsh=YXdveTkyczZkazgy',
       label: 'Instagram',
       gradient: 'from-pink-600 via-purple-600 to-orange-500',
-      hoverGlow: 'hover:shadow-pink-500/50'
+      hoverGlow: 'hover:shadow-pink-500/50',
+      isExternal: true,
     },
     {
       icon: Youtube,
       href: 'https://www.youtube.com/@KINGMAKERSOCIETY',
       label: 'YouTube',
       gradient: 'from-red-600 to-red-500',
-      hoverGlow: 'hover:shadow-red-500/50'
+      hoverGlow: 'hover:shadow-red-500/50',
+      isExternal: true,
     },
     {
       icon: MessageCircle,
-      href: 'https://discord.gg/hHSuV4tSm',
-      label: 'Discord',
+      href: '',
+      label: 'Members Only',
       gradient: 'from-indigo-600 to-indigo-500',
-      hoverGlow: 'hover:shadow-indigo-500/50'
+      hoverGlow: 'hover:shadow-indigo-500/50',
+      isExternal: false,
     },
   ];
 
@@ -87,24 +95,44 @@ export default function Footer() {
           <div className="flex flex-col">
             <h3 className="text-white font-bold mb-6">Connect</h3>
             <div className="flex flex-col space-y-4 flex-1">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center space-x-3"
-                >
-                  <div className={`relative w-10 h-10 rounded-lg bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 shadow-xl ${social.hoverGlow}`}>
-                    <social.icon className="w-5 h-5 text-white" />
-                    <div className="absolute inset-0 rounded-lg bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                    <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
-                  </div>
-                  <span className="text-sm text-gray-400 group-hover:text-white transition-colors duration-200">
-                    {social.label}
-                  </span>
-                </a>
-              ))}
+              {socialLinks.map((social, index) => {
+                const content = (
+                  <>
+                    <div className={`relative w-10 h-10 rounded-lg bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 shadow-xl ${social.hoverGlow}`}>
+                      <social.icon className="w-5 h-5 text-white" />
+                      <div className="absolute inset-0 rounded-lg bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                      <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
+                    </div>
+                    <span className="text-sm text-gray-400 group-hover:text-white transition-colors duration-200">
+                      {social.label}
+                    </span>
+                  </>
+                );
+
+                if (social.isExternal) {
+                  return (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center space-x-3"
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+
+                return (
+                  <button
+                    key={index}
+                    onClick={onMembersClick}
+                    className="group flex items-center space-x-3"
+                  >
+                    {content}
+                  </button>
+                );
+              })}
             </div>
           </div>
 

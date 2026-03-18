@@ -5,7 +5,11 @@ import LuxFadeIn from '../ui/LuxFadeIn';
 import { useCountUp } from '../../hooks/useCountUp';
 import { useInViewport } from '../../hooks/useInViewport';
 
-export default function SocialProof() {
+interface SocialProofProps {
+  onMembersClick?: () => void;
+}
+
+export default function SocialProof({ onMembersClick }: SocialProofProps) {
   const { ref: statsRef, isInViewport } = useInViewport({ threshold: 0.3 });
   const membersCount = useCountUp({ end: 500, duration: 2500, enabled: isInViewport });
   const transformationsCount = useCountUp({ end: 1000, duration: 2500, enabled: isInViewport });
@@ -17,6 +21,7 @@ export default function SocialProof() {
       gradient: 'from-blue-600 to-blue-400',
       hoverGlow: 'group-hover:shadow-blue-500/60',
       iconColor: 'text-blue-400',
+      isExternal: true,
     },
     {
       name: 'Instagram',
@@ -25,6 +30,7 @@ export default function SocialProof() {
       gradient: 'from-pink-600 via-purple-600 to-orange-500',
       hoverGlow: 'group-hover:shadow-pink-500/60',
       iconColor: 'text-pink-400',
+      isExternal: true,
     },
     {
       name: 'TikTok',
@@ -33,14 +39,7 @@ export default function SocialProof() {
       gradient: 'from-cyan-500 to-pink-500',
       hoverGlow: 'group-hover:shadow-cyan-400/60',
       iconColor: 'text-cyan-400',
-    },
-    {
-      name: 'Discord',
-      icon: MessageCircle,
-      url: 'https://discord.gg/hHSuV4tSm',
-      gradient: 'from-indigo-600 to-indigo-400',
-      hoverGlow: 'group-hover:shadow-indigo-500/60',
-      iconColor: 'text-indigo-400',
+      isExternal: true,
     },
     {
       name: 'YouTube',
@@ -49,6 +48,7 @@ export default function SocialProof() {
       gradient: 'from-red-600 to-red-400',
       hoverGlow: 'group-hover:shadow-red-500/60',
       iconColor: 'text-red-400',
+      isExternal: true,
     },
     {
       name: 'Linktree',
@@ -57,6 +57,16 @@ export default function SocialProof() {
       gradient: 'from-green-600 to-emerald-400',
       hoverGlow: 'group-hover:shadow-green-500/60',
       iconColor: 'text-green-400',
+      isExternal: true,
+    },
+    {
+      name: 'Members Only',
+      icon: MessageCircle,
+      url: '',
+      gradient: 'from-indigo-600 to-indigo-400',
+      hoverGlow: 'group-hover:shadow-indigo-500/60',
+      iconColor: 'text-indigo-400',
+      isExternal: false,
     },
   ];
 
@@ -101,24 +111,44 @@ export default function SocialProof() {
         <div className="relative p-12 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl shadow-[#FFC300]/20 backdrop-blur-sm luxury-grain overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FFC300]/5 via-transparent to-[#D11F2A]/5 animate-pulse"></div>
           <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url}
-                className="flex flex-col items-center space-y-4 group"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 shadow-xl ${social.hoverGlow}`}>
-                  <social.icon className="w-10 h-10 text-white drop-shadow-lg" />
-                  <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
-                </div>
-                <span className={`text-sm font-semibold ${social.iconColor} group-hover:text-white transition-colors duration-300`}>
-                  {social.name}
-                </span>
-              </a>
-            ))}
+            {socialLinks.map((social, index) => {
+              const content = (
+                <>
+                  <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${social.gradient} flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 shadow-xl ${social.hoverGlow}`}>
+                    <social.icon className="w-10 h-10 text-white drop-shadow-lg" />
+                    <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
+                  </div>
+                  <span className={`text-sm font-semibold ${social.iconColor} group-hover:text-white transition-colors duration-300`}>
+                    {social.name}
+                  </span>
+                </>
+              );
+
+              if (social.isExternal) {
+                return (
+                  <a
+                    key={index}
+                    href={social.url}
+                    className="flex flex-col items-center space-y-4 group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {content}
+                  </a>
+                );
+              }
+
+              return (
+                <button
+                  key={index}
+                  onClick={onMembersClick}
+                  className="flex flex-col items-center space-y-4 group"
+                >
+                  {content}
+                </button>
+              );
+            })}
           </div>
         </div>
       </LuxFadeIn>

@@ -5,6 +5,7 @@ import AnalyticsScripts from './components/AnalyticsScripts';
 import ChatWidget from './components/ChatWidget';
 import Navbar from './components/Navbar';
 import MobileMenu from './components/ui/MobileMenu';
+import MembersOnlyModal from './components/ui/MembersOnlyModal';
 import Hero from './components/sections/Hero';
 import WhoThisIsFor from './components/sections/WhoThisIsFor';
 import Problem from './components/sections/Problem';
@@ -22,10 +23,15 @@ import { luxuryScrollToSection } from './utils/luxuryScroll';
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMembersModalOpen, setIsMembersModalOpen] = useState(false);
 
   const handleNavigate = (id: string) => {
     luxuryScrollToSection(id, 80);
     setIsMobileMenuOpen(false);
+  };
+
+  const handleMembersClick = () => {
+    setIsMembersModalOpen(true);
   };
 
   const navLinks = [
@@ -41,6 +47,10 @@ export default function App() {
       <SEOHead />
       <AnalyticsScripts />
       <ChatWidget />
+      <MembersOnlyModal
+        isOpen={isMembersModalOpen}
+        onClose={() => setIsMembersModalOpen(false)}
+      />
       <div className="min-h-screen bg-[#0B0B0B] text-white">
         <Navbar
           isMobileMenuOpen={isMobileMenuOpen}
@@ -62,9 +72,9 @@ export default function App() {
         <Questionnaire />
         <BookCall />
         <Pricing />
-        <SocialProof />
+        <SocialProof onMembersClick={handleMembersClick} />
         <FinalCTA />
-        <Footer />
+        <Footer onMembersClick={handleMembersClick} />
       </div>
     </ApplicationProvider>
   );

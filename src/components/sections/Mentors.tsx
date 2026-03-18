@@ -5,22 +5,13 @@ import LuxFadeIn from '../ui/LuxFadeIn';
 import MediaImage from '../ui/MediaImage';
 
 export default function Mentors() {
-  const founders = [
-    {
-      name: 'Jordan Ali',
-      role: 'Founder, Kingmaker Society',
-      icon: Crown,
-      image: '/images/founders/jordan-ali-founder-selfie-portrait.jpg',
-      description: 'Professional MMA fighter, business owner, and man of God. Jordan founded Kingmaker Society to create a high-accountability environment where men sharpen men through structure, brotherhood, and real action. He lives the standards he teaches: show up daily, train with intention, and build a life you can be proud of.',
-    },
-    {
-      name: 'Christopher Valdez',
-      role: 'Co-Founder, Kingmaker Society',
-      icon: Crown,
-      image: '/images/founders/christopher-valdez-cofounder-portrait.jpg',
-      description: '26-year-old co-founder fully committed to building the community and setting the standard from the inside out. Moved from California to Texas to lock in on the business, the brotherhood, and his personal fitness journey, with a goal of becoming Kingmaker Society\'s first major transformation testimonial.',
-    },
-  ];
+  const founder = {
+    name: 'Jordan Ali',
+    role: 'Founder, Kingmaker Society',
+    icon: Crown,
+    image: '/images/founders/jordan-ali-founder-selfie-portrait.jpg',
+    description: 'Professional MMA fighter, business owner, and man of God. Jordan founded Kingmaker Society to create a high-accountability environment where men sharpen men through structure, brotherhood, and real action. He lives the standards he teaches: show up daily, train with intention, and build a life you can be proud of.',
+  };
 
   const mentors = [
     {
@@ -66,34 +57,34 @@ export default function Mentors() {
 
       <div className="mb-16">
         <LuxFadeIn delay={0.1}>
-          <h3 className="text-2xl font-bold text-[#FFC300] mb-8 text-center drop-shadow-[0_0_20px_rgba(255,195,0,0.3)]">Founders</h3>
+          <h3 className="text-2xl font-bold text-[#FFC300] mb-8 text-center drop-shadow-[0_0_20px_rgba(255,195,0,0.3)]">Founder</h3>
         </LuxFadeIn>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {founders.map((founder, index) => (
-            <LuxFadeIn key={index} delay={0.2 + index * 0.1}>
+        <div className="flex justify-center">
+          <div className="w-full max-w-md">
+            <LuxFadeIn delay={0.2}>
               <Card variant="gold" className="p-8 h-full hover:scale-105 transition-all duration-500 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#FFC300]/10 to-transparent rounded-full blur-3xl"></div>
-              <div className="relative z-10 flex flex-col items-center text-center space-y-6">
-                <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-[#FFC300] shadow-2xl shadow-[#FFC300]/40">
-                  <MediaImage
-                    src={founder.image}
-                    alt={`${founder.name}, ${founder.role}`}
-                    className="w-full h-full"
-                    objectFit="cover"
-                    lazy={false}
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#FFC300]/10 to-transparent rounded-full blur-3xl"></div>
+                <div className="relative z-10 flex flex-col items-center text-center space-y-6">
+                  <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-[#FFC300] shadow-2xl shadow-[#FFC300]/40">
+                    <MediaImage
+                      src={founder.image}
+                      alt={`${founder.name}, ${founder.role}`}
+                      className="w-full h-full"
+                      objectFit="cover"
+                      lazy={false}
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">{founder.name}</h4>
+                    <p className="text-[#FFC300] font-semibold mb-4 drop-shadow-[0_0_15px_rgba(255,195,0,0.3)]">{founder.role}</p>
+                    <p className="text-gray-300 leading-relaxed">{founder.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-2xl font-bold text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">{founder.name}</h4>
-                  <p className="text-[#FFC300] font-semibold mb-4 drop-shadow-[0_0_15px_rgba(255,195,0,0.3)]">{founder.role}</p>
-                  <p className="text-gray-300 leading-relaxed">{founder.description}</p>
-                </div>
-              </div>
-            </Card>
+              </Card>
             </LuxFadeIn>
-          ))}
+          </div>
         </div>
       </div>
 

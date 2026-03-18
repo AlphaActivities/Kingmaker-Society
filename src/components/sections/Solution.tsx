@@ -7,7 +7,7 @@ export default function Solution() {
   const features = [
     {
       icon: Users,
-      title: 'Discord Community Hub',
+      title: 'Members Only Hub',
       description: '24/7 access to a brotherhood of faith-driven men pursuing discipline, fitness, and purpose',
     },
     {

@@ -4,10 +4,6 @@ export const mediaConfig = {
       src: 'https://images.pexels.com/photos/6741245/pexels-photo-6741245.jpeg?auto=compress&cs=tinysrgb&w=800',
       alt: 'Jordan Ali, Founder of Kingmaker Society - Professional MMA fighter and business owner',
     },
-    christopherValdez: {
-      src: 'https://images.pexels.com/photos/3912953/pexels-photo-3912953.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Christopher Valdez, Co-Founder of Kingmaker Society - Community leader and transformation advocate',
-    },
   },
 
   mentors: {
