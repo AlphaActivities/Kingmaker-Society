@@ -160,9 +160,12 @@ export default function MobileMenu({ isOpen, onClose, navLinks, onNavigate }: Mo
               {/* Pulsing glow animation */}
               <div className="absolute inset-0 rounded-full bg-[#FFC300]/20 animate-pulse-glow" />
 
-              <div className="relative text-center text-base tracking-wide">
-                <span className="text-[#FFC300] font-bold text-lg">500+</span>
-                <span className="text-white/80 font-medium ml-2">Elite Members</span>
+              <div className="relative flex items-center justify-center gap-2 text-base tracking-wide">
+                <span className="text-2xl">👥</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-[#FFC300] font-bold text-lg">500+</span>
+                  <span className="text-white/80 font-medium">Elite Members</span>
+                </div>
               </div>
 
               {/* Subtle shimmer effect */}
