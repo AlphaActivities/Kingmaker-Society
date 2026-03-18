@@ -159,7 +159,7 @@ export default function SocialProof({ onMembersClick }: SocialProofProps) {
 
           return (
             <LuxFadeIn key={index} delay={0.2 + index * 0.1}>
-              <div className="group relative p-8 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl hover:border-[#FFC300]/60 transition-all duration-500 hover:scale-105 luxury-grain overflow-hidden">
+              <div className="group relative px-8 pt-8 pb-12 bg-gradient-to-br from-[#1B1B1B]/95 to-[#2B2B2B]/95 border-2 border-[#FFC300]/30 rounded-2xl shadow-2xl hover:border-[#FFC300]/60 transition-all duration-500 hover:scale-105 luxury-grain overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
 
