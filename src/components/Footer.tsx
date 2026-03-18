@@ -1,5 +1,6 @@
-import { Mail, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Mail, Facebook, Instagram, Youtube, MessageCircle, Calendar } from 'lucide-react';
 import { luxuryScrollToSection } from '../utils/luxuryScroll';
+import { trackClickBookCall } from '../utils/analytics';
 
 interface FooterProps {
   onMembersClick?: () => void;
@@ -8,6 +9,11 @@ interface FooterProps {
 export default function Footer({ onMembersClick }: FooterProps) {
   const scrollToSection = (id: string) => {
     luxuryScrollToSection(id, 80);
+  };
+
+  const handleBookCall = () => {
+    trackClickBookCall('footer_contact');
+    window.open('https://calendly.com/jordanaliwork/30min', '_blank');
   };
 
   const footerLinks = {
@@ -138,7 +144,7 @@ export default function Footer({ onMembersClick }: FooterProps) {
 
           <div className="flex flex-col">
             <h3 className="text-white font-bold mb-6">Contact</h3>
-            <div className="space-y-3 flex-1">
+            <div className="space-y-5 flex-1">
               <a
                 href="mailto:contact@kingmakersociety.com"
                 className="flex items-center space-x-2 text-gray-400 hover:text-[#FFC300] transition-colors duration-200 text-sm"
@@ -146,6 +152,17 @@ export default function Footer({ onMembersClick }: FooterProps) {
                 <Mail className="w-4 h-4" />
                 <span>contact@kingmakersociety.com</span>
               </a>
+
+              <button
+                onClick={handleBookCall}
+                className="group relative w-full px-4 py-2.5 bg-gradient-to-r from-[#FFC300] via-[#FFD033] to-[#D4A000] text-[#0B0B0B] font-bold rounded-lg transition-all duration-400 hover:from-[#FFD033] hover:via-[#FFE066] hover:to-[#E5B100] shadow-[0_3px_16px_rgba(255,195,0,0.35)] hover:shadow-[0_6px_24px_rgba(255,195,0,0.55)] hover:-translate-y-0.5 hover:scale-105 transform-gpu active:scale-95 focus:outline-none focus:ring-3 focus:ring-offset-2 focus:ring-offset-[#0B0B0B] focus:ring-[#FFC300]/60 overflow-hidden text-sm min-h-[44px]"
+              >
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>Book Strategy Call</span>
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+              </button>
             </div>
           </div>
         </div>
