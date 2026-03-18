@@ -106,14 +106,14 @@ export default function VideoModal({ videoUrl, title, isOpen, onClose }: VideoMo
             <div className="relative bg-black rounded-xl overflow-hidden group/video">
               <button
                 onClick={handleClose}
-                className={`absolute top-3 right-3 sm:top-4 sm:right-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-30 opacity-0 group-hover/video:opacity-100 ${
+                className={`absolute top-3 right-3 sm:top-4 sm:right-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FFC300]/20 to-[#D11F2A]/20 backdrop-blur-sm text-white transition-all duration-300 hover:scale-110 hover:from-[#FFC300]/30 hover:to-[#D11F2A]/30 z-30 opacity-0 group-hover/video:opacity-100 group ${
                   isExiting ? 'opacity-0' : ''
                 }`}
                 aria-label="Close video"
               >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FFC300]/40 to-[#D11F2A]/40 opacity-0 hover:opacity-100 transition-opacity duration-300 blur-xl" />
 
-                <X className="w-6 h-6 relative z-10 transition-transform hover:rotate-90 duration-300" />
+                <X className="w-6 h-6 relative z-10 transition-transform group-hover:rotate-90 duration-300 origin-center" />
               </button>
 
               {!videoLoaded && (
