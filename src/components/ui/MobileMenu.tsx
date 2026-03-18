@@ -40,17 +40,9 @@ export default function MobileMenu({ isOpen, onClose, navLinks, onNavigate }: Mo
     <>
       {/* Enhanced backdrop overlay - fully opaque to completely obscure content */}
       <div
-        className={`fixed z-[105] bg-black/90 backdrop-blur-xl backdrop-saturate-200 transition-opacity duration-500 ${
+        className={`fixed top-20 left-0 right-0 bottom-0 bg-black/90 backdrop-blur-xl backdrop-saturate-200 z-[105] transition-opacity duration-500 ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{
-          top: 80,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          width: '100vw',
-          height: 'calc(100vh - 80px)',
-        }}
         onClick={onClose}
         aria-hidden="true"
       >
