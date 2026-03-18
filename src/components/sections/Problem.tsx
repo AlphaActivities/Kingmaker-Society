@@ -5,10 +5,11 @@ import LuxFadeIn from '../ui/LuxFadeIn';
 export default function Problem() {
   return (
     <Section id="problem" background="darker">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D11F2A]/5 to-transparent opacity-50"></div>
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#D11F2A]/10 rounded-full blur-[150px] animate-pulse"></div>
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D11F2A]/5 to-transparent opacity-50"></div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#D11F2A]/10 rounded-full blur-[150px] animate-pulse"></div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
         <LuxFadeIn>
           <div className="inline-flex items-center space-x-2 px-4 py-2 bg-[#D11F2A]/10 border border-[#D11F2A]/30 rounded-full mb-8">
             <AlertCircle className="w-4 h-4 text-[#D11F2A]" />
@@ -72,6 +73,7 @@ export default function Problem() {
             </div>
           </div>
         </LuxFadeIn>
+      </div>
       </div>
     </Section>
   );
