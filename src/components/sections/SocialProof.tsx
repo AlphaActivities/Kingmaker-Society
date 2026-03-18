@@ -163,8 +163,8 @@ export default function SocialProof({ onMembersClick }: SocialProofProps) {
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 shadow-2xl ${stat.glowColor} transition-all duration-500 rounded-2xl`}></div>
 
-                <div className="relative text-center space-y-3">
-                  <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="relative flex flex-col items-center space-y-3">
+                  <div className="text-5xl mb-3 transform group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                     {stat.icon}
                   </div>
                   <div className={`text-5xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,195,0,0.3)] group-hover:drop-shadow-[0_4px_20px_rgba(255,195,0,0.6)] transition-all duration-500`}>
