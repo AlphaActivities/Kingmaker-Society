@@ -11,7 +11,7 @@ interface SocialProofProps {
 
 export default function SocialProof({ onMembersClick }: SocialProofProps) {
   const { ref: statsRef, isInViewport } = useInViewport({ threshold: 0.3 });
-  const membersCount = useCountUp({ end: 500, duration: 2500, enabled: isInViewport });
+  const membersCount = useCountUp({ end: 100, duration: 2500, enabled: isInViewport });
   const transformationsCount = useCountUp({ end: 1000, duration: 2500, enabled: isInViewport });
   const socialLinks = [
     {
@@ -72,7 +72,7 @@ export default function SocialProof({ onMembersClick }: SocialProofProps) {
 
   const stats = [
     {
-      value: '500+',
+      value: '100+',
       label: 'Active Members',
       gradient: 'from-[#FFC300] via-[#FFD700] to-[#FFA500]',
       glowColor: 'group-hover:shadow-[#FFC300]/60',

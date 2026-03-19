@@ -161,7 +161,7 @@ export default function MobileMenu({ isOpen, onClose, navLinks, onNavigate }: Mo
               <div className="absolute inset-0 rounded-full bg-[#FFC300]/20 animate-pulse-glow" />
 
               <div className="relative text-center text-base tracking-wide">
-                <span className="text-[#FFC300] font-bold text-lg">500+</span>
+                <span className="text-[#FFC300] font-bold text-lg">100+</span>
                 <span className="text-white/80 font-medium ml-2">Elite Members</span>
               </div>
 
