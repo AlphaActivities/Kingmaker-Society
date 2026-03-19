@@ -8,11 +8,11 @@ export interface SEOMetadata {
 }
 
 export const defaultSEO: SEOMetadata = {
-  title: 'Kingmaker Society | Brotherhood for Faith Driven Men',
+  title: 'Kingmaker Society | Build Your Body, Business & Brotherhood',
   description: 'Kingmaker Society is a structured brotherhood for faith-driven men who want to build discipline, fitness, purpose, and future business through accountability, mentorship, and daily structure.',
   canonical: 'https://kingmakersociety.com',
   ogType: 'website',
-  ogImage: 'https://kingmakersociety.com/og-image.jpg',
+  ogImage: 'https://kingmakersociety.com/images/logos/OG-photo.jpg',
   twitterCard: 'summary_large_image'
 };
 
