@@ -10,6 +10,7 @@ import { luxuryScrollToSection, scrollToApplication } from '../../utils/luxurySc
 import { validateLeadForm, ValidationError } from '../../utils/validation';
 import { useApplication } from '../../context/ApplicationContext';
 import { trackBeginApplication, trackCompleteLeadForm } from '../../utils/analytics';
+import { submitLead } from '../../services/leadService';
 
 export default function Hero() {
   const { setLeadId, setApplicationStep, setLeadSubmitted } = useApplication();
@@ -50,36 +51,58 @@ export default function Hero() {
     setIsSubmitting(true);
 
     try {
+      // PRIMARY: Submit to Supabase (source of truth)
+      const supabaseResult = await submitLead(formData);
+
+      if (!supabaseResult.success || !supabaseResult.leadId) {
+        setIsSubmitting(false);
+        setSubmitError(supabaseResult.error || 'Failed to submit application. Please try again.');
+        return;
+      }
+
+      // Set leadId in context (enables questionnaire)
+      setLeadId(supabaseResult.leadId);
+
+      // Store leadId in sessionStorage for page refresh recovery
+      try {
+        sessionStorage.setItem('kingmaker_lead_id', supabaseResult.leadId);
+      } catch (storageError) {
+        console.warn('sessionStorage unavailable:', storageError);
+      }
+
+      // SECONDARY: Fire-and-forget Netlify notification (non-blocking)
       const form = e.target as HTMLFormElement;
       const formDataEncoded = new URLSearchParams(new FormData(form) as any).toString();
 
-      const response = await fetch('/', {
+      fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formDataEncoded,
+      }).catch(err => {
+        console.warn('Netlify notification failed (non-critical):', err);
       });
 
+      // Update application state
+      setLeadSubmitted(true);
+      setSubmitSuccess(true);
+      setApplicationStep('questionnaire');
       setIsSubmitting(false);
 
-      if (response.ok) {
-        setLeadSubmitted(true);
-        setSubmitSuccess(true);
-        setApplicationStep('questionnaire');
+      // Track analytics
+      trackCompleteLeadForm({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+      });
 
-        trackCompleteLeadForm({
-          name: `${formData.firstName} ${formData.lastName}`,
-          email: formData.email,
-        });
+      // Scroll to questionnaire
+      setTimeout(() => {
+        luxuryScrollToSection('questionnaire', 80);
+      }, 1500);
 
-        setTimeout(() => {
-          luxuryScrollToSection('questionnaire', 80);
-        }, 1500);
-      } else {
-        setSubmitError('Failed to submit application. Please try again.');
-      }
     } catch (error) {
       setIsSubmitting(false);
       setSubmitError('Failed to submit application. Please try again.');
+      console.error('Application submission error:', error);
     }
   };
 
