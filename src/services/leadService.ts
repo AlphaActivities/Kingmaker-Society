@@ -47,15 +47,14 @@ export const submitLead = async (data: LeadData): Promise<{ success: boolean; le
       .from('leads')
       .insert([
         {
-          first_name: data.firstName,
-          last_name: data.lastName,
+          firstName: data.firstName,
+          lastName: data.lastName,
           email: data.email,
           phone: data.phone,
           age: parseInt(data.age),
           timezone: data.timezone,
           occupation: data.occupation,
-          biggest_struggle: data.struggle,
-          status: 'new',
+          struggle: data.struggle,
         },
       ])
       .select()
