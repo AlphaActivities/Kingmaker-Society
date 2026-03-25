@@ -55,6 +55,7 @@ export const submitLead = async (data: LeadData): Promise<{ success: boolean; le
           timezone: data.timezone,
           occupation: data.occupation,
           biggest_struggle: data.struggle,
+          status: 'new',
         },
       ])
       .select()

@@ -8,9 +8,9 @@ import LuxFadeIn from '../ui/LuxFadeIn';
 import HeroBackgroundSlider from '../ui/HeroBackgroundSlider';
 import { luxuryScrollToSection, scrollToApplication } from '../../utils/luxuryScroll';
 import { validateLeadForm, ValidationError } from '../../utils/validation';
+import { submitLead } from '../../services/leadService';
 import { useApplication } from '../../context/ApplicationContext';
 import { trackBeginApplication, trackCompleteLeadForm } from '../../utils/analytics';
-import { submitLead } from '../../services/leadService';
 
 export default function Hero() {
   const { setLeadId, setApplicationStep, setLeadSubmitted } = useApplication();
@@ -50,59 +50,26 @@ export default function Hero() {
 
     setIsSubmitting(true);
 
-    try {
-      // PRIMARY: Submit to Supabase (source of truth)
-      const supabaseResult = await submitLead(formData);
+    const result = await submitLead(formData);
 
-      if (!supabaseResult.success || !supabaseResult.leadId) {
-        setIsSubmitting(false);
-        setSubmitError(supabaseResult.error || 'Failed to submit application. Please try again.');
-        return;
-      }
+    setIsSubmitting(false);
 
-      // Set leadId in context (enables questionnaire)
-      setLeadId(supabaseResult.leadId);
-
-      // Store leadId in sessionStorage for page refresh recovery
-      try {
-        sessionStorage.setItem('kingmaker_lead_id', supabaseResult.leadId);
-      } catch (storageError) {
-        console.warn('sessionStorage unavailable:', storageError);
-      }
-
-      // SECONDARY: Fire-and-forget Netlify notification (non-blocking)
-      const form = e.target as HTMLFormElement;
-      const formDataEncoded = new URLSearchParams(new FormData(form) as any).toString();
-
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formDataEncoded,
-      }).catch(err => {
-        console.warn('Netlify notification failed (non-critical):', err);
-      });
-
-      // Update application state
+    if (result.success && result.leadId) {
+      setLeadId(result.leadId);
       setLeadSubmitted(true);
       setSubmitSuccess(true);
       setApplicationStep('questionnaire');
-      setIsSubmitting(false);
 
-      // Track analytics
       trackCompleteLeadForm({
         name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
       });
 
-      // Scroll to questionnaire
       setTimeout(() => {
         luxuryScrollToSection('questionnaire', 80);
       }, 1500);
-
-    } catch (error) {
-      setIsSubmitting(false);
-      setSubmitError('Failed to submit application. Please try again.');
-      console.error('Application submission error:', error);
+    } else {
+      setSubmitError(result.error || 'Failed to submit application. Please try again.');
     }
   };
 
@@ -182,22 +149,7 @@ export default function Hero() {
                 </div>
               </div>
             ) : (
-              <form
-                id="application-form"
-                name="kingmaker-lead-capture"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                onSubmit={handleSubmit}
-                className="relative bg-gradient-to-br from-[#1B1B1B]/98 to-[#2B2B2B]/98 border-2 border-[#FFC300]/40 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(255,195,0,0.25)] hover:border-[#FFC300]/60 hover:shadow-[0_12px_48px_rgba(255,195,0,0.35)] transition-all duration-500 backdrop-blur-md luxury-grain before:absolute before:inset-0 before:rounded-2xl before:p-[2px] before:bg-gradient-to-br before:from-[#FFC300]/20 before:via-transparent before:to-[#D11F2A]/20 before:-z-10 before:blur-sm"
-              >
-                <input type="hidden" name="form-name" value="kingmaker-lead-capture" />
-                <p className="hidden">
-                  <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
-                  </label>
-                </p>
-
+              <form id="application-form" onSubmit={handleSubmit} className="relative bg-gradient-to-br from-[#1B1B1B]/98 to-[#2B2B2B]/98 border-2 border-[#FFC300]/40 rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(255,195,0,0.25)] hover:border-[#FFC300]/60 hover:shadow-[0_12px_48px_rgba(255,195,0,0.35)] transition-all duration-500 backdrop-blur-md luxury-grain before:absolute before:inset-0 before:rounded-2xl before:p-[2px] before:bg-gradient-to-br before:from-[#FFC300]/20 before:via-transparent before:to-[#D11F2A]/20 before:-z-10 before:blur-sm">
                 <h3 className="text-2xl font-bold text-white mb-6">
                   Start Your Application
                 </h3>
@@ -211,7 +163,6 @@ export default function Hero() {
                 <div className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Input
-                      name="firstName"
                       label="First Name"
                       type="text"
                       placeholder="John"
@@ -222,7 +173,6 @@ export default function Hero() {
                       required
                     />
                     <Input
-                      name="lastName"
                       label="Last Name"
                       type="text"
                       placeholder="Doe"
@@ -234,7 +184,6 @@ export default function Hero() {
                   </div>
 
                   <Input
-                    name="email"
                     label="Email"
                     type="email"
                     placeholder="john@example.com"
@@ -245,7 +194,6 @@ export default function Hero() {
                   />
 
                   <Input
-                    name="phone"
                     label="Phone Number"
                     type="tel"
                     placeholder="+1 (555) 123-4567"
@@ -257,7 +205,6 @@ export default function Hero() {
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Input
-                      name="age"
                       label="Age"
                       type="number"
                       placeholder="25"
@@ -267,7 +214,6 @@ export default function Hero() {
                       required
                     />
                     <Input
-                      name="timezone"
                       label="Time Zone"
                       type="text"
                       placeholder="EST, PST, etc."
@@ -279,7 +225,6 @@ export default function Hero() {
                   </div>
 
                   <Input
-                    name="occupation"
                     label="Occupation (9-to-5 Role)"
                     type="text"
                     placeholder="Your current job"
@@ -290,7 +235,6 @@ export default function Hero() {
                   />
 
                   <Select
-                    name="struggle"
                     label="Biggest Struggle"
                     options={struggles}
                     value={formData.struggle}
